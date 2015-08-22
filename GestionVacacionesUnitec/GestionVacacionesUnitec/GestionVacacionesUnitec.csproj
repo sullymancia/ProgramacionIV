@@ -80,12 +80,21 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
     <None Include="Service References\ServiceReference1\configuration91.svcinfo" />
     <None Include="Service References\ServiceReference1\configuration.svcinfo" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Service References\ServiceReference1\GestionVacacionesUnitec.ServiceReference1.CompositeType.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
-    <Content Include="Service References\ServiceReference1\GestionVacacionesUnitec.ServiceReference1.tbl_usuarios.datasource">
+    <Content Include="Service References\ServiceReference1\GestionVacacionesUnitec.ServiceReference1.Usuario.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <None Include="Service References\ServiceReference1\Reference.svcmap">
@@ -96,6 +105,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\LoginTestController.cs" />
+    <Compile Include="Controllers\TestForServiceController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -119,6 +130,9 @@
     <None Include="Service References\ServiceReference1\WcfServiceLibrary_sjb.xsd">
       <SubType>Designer</SubType>
     </None>
+    <Content Include="Views\LoginTest\TestIndex.cshtml" />
+    <Content Include="Views\TestForService\TestStartIndex.cshtml" />
+    <Content Include="Views\LoginTest\Test2Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -128,7 +142,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Controllers\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>

@@ -50,7 +50,7 @@
   <xs:element name="LogInUsuarioResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/WcfServiceLibrary_sjb" minOccurs="0" name="LogInUsuarioResult" nillable="true" type="q3:tbl_usuarios" />
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/WcfServiceLibrary_sjb" minOccurs="0" name="LogInUsuarioResult" nillable="true" type="q3:Usuario" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
