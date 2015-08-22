@@ -1,0 +1,25 @@
+﻿@model GestionVacacionesUnitec.ServiceReference1.Usuario
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>TestIndex</title>
+</head>
+<body>
+    Usuario use = (Usuario)(Session["Secion"])
+    <h1>@ViewData.Model.</h1><br />
+    <h1>@ViewData.Model.primer_nombre</h1><br />
+    <h1>@ViewData.Model.segundo_nombre</h1><br />
+    <h1>@ViewData.Model.primer_apellido</h1><br />
+    <h1>@ViewData.Model.segundo_apellido</h1><br />
+    <h1>@ViewData.Model.talento_humano</h1><br />
+    <h1>@ViewData.Model.fecha_ingreso</h1><br />
+    <h1>@ViewData.Model.fecha_creacion</h1><br />
+</body>
+</html>

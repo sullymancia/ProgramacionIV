@@ -21,7 +21,7 @@ namespace WcfServiceLibrary_sjb
         void agregarUsuario();
 
         [OperationContract]
-        tbl_usuarios LogInUsuario(string email , string password);
+        Usuario LogInUsuario(string email , string password);
 
         // TODO: Add your service operations here
     }
@@ -47,5 +47,20 @@ namespace WcfServiceLibrary_sjb
             get { return stringValue; }
             set { stringValue = value; }
         }
+    }
+
+    [DataContract]
+    public class Usuario
+    {
+        public int talento_humano { get; set; }
+        public string email { get; set; }
+        public string primer_nombre { get; set; }
+        public string segundo_nombre { get; set; }
+        public string primer_apellido { get; set; }
+        public string segundo_apellido { get; set; }
+        public System.DateTime fecha_ingreso { get; set; }
+        public System.DateTime fecha_creacion { get; set; }
+        public string password { get; set; }
+        public bool activo { get; set; }
     }
 }
