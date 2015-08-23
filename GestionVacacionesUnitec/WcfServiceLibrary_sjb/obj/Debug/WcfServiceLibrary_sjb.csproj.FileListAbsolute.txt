@@ -13,3 +13,4 @@ C:\Users\SuMari\Documents\GitHub\ProgramacionIV\GestionVacacionesUnitec\WcfServi
 C:\Users\SuMari\Documents\GitHub\ProgramacionIV\GestionVacacionesUnitec\WcfServiceLibrary_sjb\obj\Debug\WcfServiceLibrary_sjb.csprojResolveAssemblyReference.cache
 C:\Users\SuMari\Documents\GitHub\ProgramacionIV\GestionVacacionesUnitec\WcfServiceLibrary_sjb\obj\Debug\WcfServiceLibrary_sjb.dll
 C:\Users\SuMari\Documents\GitHub\ProgramacionIV\GestionVacacionesUnitec\WcfServiceLibrary_sjb\obj\Debug\WcfServiceLibrary_sjb.pdb
+C:\Users\Jesus\Dropbox\Clases Unitec\Programacion 4\Projects\ProgramacionIV\GestionVacacionesUnitec\WcfServiceLibrary_sjb\obj\Debug\WcfServiceLibrary_sjb.csprojResolveAssemblyReference.cache

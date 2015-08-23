@@ -87,35 +87,6 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
-    <Reference Include="System.Web.Razor">
-      <HintPath>..\packages\Microsoft.AspNet.Razor.3.0.0\lib\net45\System.Web.Razor.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Webpages">
-      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.0.0\lib\net45\System.Web.Webpages.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Webpages.Deployment">
-      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.0.0\lib\net45\System.Web.Webpages.Deployment.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Webpages.Razor">
-      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.0.0\lib\net45\System.Web.Webpages.Razor.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Helpers">
-      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.0.0\lib\net45\System.Web.Helpers.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Mvc">
-      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.0.0\lib\net45\System.Web.Mvc.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Content\images\background-photo - copia.jpg" />
-    <Content Include="Content\images\background-photo-mobile-devices - copia.jpg" />
-    <Content Include="Content\images\background-photo-mobile-devices.jpg" />
-    <Content Include="Content\images\background-photo.jpg" />
-    <Content Include="Content\images\logounitecpeque.jpg" />
-    <Content Include="Content\StyleLogin.css" />
-=======
->>>>>>> adf6eaae150ee8ff677e688019918d6163175e53
     <Content Include="Global.asax" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -142,12 +113,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
-<<<<<<< HEAD
-    <Compile Include="Controllers\HomeController.cs" />
-=======
     <Compile Include="Controllers\LoginTestController.cs" />
     <Compile Include="Controllers\TestForServiceController.cs" />
->>>>>>> adf6eaae150ee8ff677e688019918d6163175e53
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -171,13 +138,9 @@
     <None Include="Service References\ServiceReference1\WcfServiceLibrary_sjb.xsd">
       <SubType>Designer</SubType>
     </None>
-<<<<<<< HEAD
-    <Content Include="Views\Home\Index.cshtml" />
-=======
     <Content Include="Views\LoginTest\TestIndex.cshtml" />
     <Content Include="Views\TestForService\TestStartIndex.cshtml" />
     <Content Include="Views\LoginTest\Test2Index.cshtml" />
->>>>>>> adf6eaae150ee8ff677e688019918d6163175e53
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
