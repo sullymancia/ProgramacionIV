@@ -62,9 +62,7 @@ namespace WcfServiceLibrary_sjb
                 segundo_nombre = query.segundo_apellido,
                 talento_humano = query.talento_humano
             };
-            
-            return user;
-            
+            return user; 
         }
     }
 }
