@@ -37,19 +37,32 @@ namespace WcfServiceLibrary_sjb
             ent.SaveChanges();
         }
 
-        public tbl_usuarios LogInUsuario(string email, string password)
+        public Usuario LogInUsuario(string email, string password)
         {
             vsystem_sjbEntities ent = new vsystem_sjbEntities();
-            tbl_usuarios newUsuario = new tbl_usuarios();
+            //tbl_usuarios newUsuario = new tbl_usuarios();
 
-            var query = from u in ent.tbl_usuarios
+            var query = (from u in ent.tbl_usuarios
                         where u.email == email && u.password == password
-                        select u;
-            if (query.Any())
-                newUsuario = query.First();
-            else
+                        select u).FirstOrDefault();
+
+            if(query == null)
                 return null;
-            return newUsuario;
+
+            Usuario user = new Usuario()
+            {
+                activo = query.activo,
+                email = query.email,
+                fecha_creacion = query.fecha_creacion,
+                fecha_ingreso = query.fecha_ingreso,
+                password = query.password,
+                primer_apellido = query.primer_apellido,
+                primer_nombre = query.primer_nombre,
+                segundo_apellido = query.segundo_apellido,
+                segundo_nombre = query.segundo_apellido,
+                talento_humano = query.talento_humano
+            };
+            return user; 
         }
     }
 }
