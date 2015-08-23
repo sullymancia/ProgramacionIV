@@ -113,6 +113,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginTestController.cs" />
     <Compile Include="Controllers\TestForServiceController.cs" />
     <Compile Include="Global.asax.cs">
@@ -141,6 +142,7 @@
     <Content Include="Views\LoginTest\TestIndex.cshtml" />
     <Content Include="Views\TestForService\TestStartIndex.cshtml" />
     <Content Include="Views\LoginTest\Test2Index.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
