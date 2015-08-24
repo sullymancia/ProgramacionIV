@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>ADO.NET.Helper</id>
+    <version>1.0.3.0</version>
+    <title>ADO.NET.Helper</title>
+    <authors>Original author is unknown but code is maintained by James Larry Gaines II</authors>
+    <owners>Original author is unknown but code is maintained by James Larry Gaines II</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>A Helper Library for accessing Database. Wraps the access to ADO.NET based on intent.</description>
+    <summary>I got this collection of classes when we're doing a side-line project. I believe this classes can be reused</summary>
+    <frameworkAssemblies>
+      <frameworkAssembly assemblyName="System" targetFramework=".NETFramework4.0" />
+    </frameworkAssemblies>
+  </metadata>
+</package>
