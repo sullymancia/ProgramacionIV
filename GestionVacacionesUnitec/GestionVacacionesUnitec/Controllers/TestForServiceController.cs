@@ -15,6 +15,13 @@ namespace GestionVacacionesUnitec.Controllers
             return View("TestStartIndex");
         }
 
+        [HttpPost]
+        public void LoginValidation(string email, string password)
+        {
+            Login(email,password);
+        }
+
+
         public RedirectToRouteResult Login(string email, string password)
         {
             Service1Client test = new Service1Client();
