@@ -31,7 +31,18 @@
   </xs:element>
   <xs:element name="agregarUsuario">
     <xs:complexType>
-      <xs:sequence />
+      <xs:sequence>
+        <xs:element minOccurs="0" name="talentoH" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="correo" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="password" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="nombre1" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="nombre2" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="apellido1" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="apellido2" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="fechaIngreso" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="fechaCreacion" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="activo" type="xs:boolean" />
+      </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="agregarUsuarioResponse">
@@ -52,6 +63,73 @@
       <xs:sequence>
         <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/WcfServiceLibrary_sjb" minOccurs="0" name="LogInUsuarioResult" nillable="true" type="q3:Usuario" />
       </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="agregarDepartamento">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="descripcion" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="activo" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="agregarDepartamentoResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="agregarRol">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="descripcion" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="activo" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="agregarRolResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Rol_Usuario">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ID_rol" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ID_permiso" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Rol_UsuarioResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Usuario_Departamento">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Talento_Humano" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ID_departamento" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Usuario_DepartamentoResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Usuario_Rol">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="Talento_Humano" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="ID_rol" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Usuario_RolResponse">
+    <xs:complexType>
+      <xs:sequence />
     </xs:complexType>
   </xs:element>
 </xs:schema>

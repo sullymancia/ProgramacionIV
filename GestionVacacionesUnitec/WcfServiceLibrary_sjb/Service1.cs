@@ -28,10 +28,20 @@ namespace WcfServiceLibrary_sjb
             return composite;
         }
 
-        public void agregarUsuario()
+        public void agregarUsuario(string talentoH, string correo, string password, string nombre1, string nombre2, string apellido1, string apellido2, string fechaIngreso, string fechaCreacion, bool activo)
         {
             vsystem_sjbEntities ent = new vsystem_sjbEntities();
             tbl_usuarios newUsuario = new tbl_usuarios();
+            newUsuario.talento_humano = Int32.Parse(talentoH);
+            newUsuario.password = password;
+            newUsuario.email = correo;
+            newUsuario.primer_nombre = nombre1;
+            newUsuario.segundo_nombre = nombre2;
+            newUsuario.primer_apellido = apellido1;
+            newUsuario.segundo_apellido = apellido2;
+            newUsuario.fecha_ingreso = Convert.ToDateTime(fechaIngreso);
+            newUsuario.fecha_creacion = Convert.ToDateTime(fechaCreacion);
+            newUsuario.activo = activo;
 
             ent.tbl_usuarios.Add(newUsuario);
             ent.SaveChanges();
@@ -63,6 +73,45 @@ namespace WcfServiceLibrary_sjb
                 talento_humano = query.talento_humano
             };
             return user; 
+        }
+
+        public void agregarDepartamento(string ID, string descripcion, bool activo)
+        {
+            vsystem_sjbEntities ent = new vsystem_sjbEntities();
+            tbl_departamento newDepartamento = new tbl_departamento();
+            newDepartamento.departamentoid = Int32.Parse(ID);
+            newDepartamento.descripcion = descripcion;
+            newDepartamento.activo = activo;
+
+            ent.tbl_departamento.Add(newDepartamento);
+            ent.SaveChanges();
+        }
+
+        public void agregarRol(string ID, string descripcion, bool activo)
+        {
+            vsystem_sjbEntities ent = new vsystem_sjbEntities();
+            tbl_roles newRol = new tbl_roles();
+            newRol.rolesid = Int32.Parse(ID);
+            newRol.descripcion = descripcion;
+            newRol.activo = activo;
+
+            ent.tbl_roles.Add(newRol);
+            ent.SaveChanges();
+        }
+
+        public void Rol_Usuario(string ID_rol, string ID_permiso)
+        {
+            vsystem_sjbEntities ent = new vsystem_sjbEntities();
+        }
+
+        public void Usuario_Departamento(string Talento_Humano, string ID_departamento)
+        {
+            vsystem_sjbEntities ent = new vsystem_sjbEntities();
+        }
+
+        public void Usuario_Rol(string Talento_Humano, string ID_rol)
+        {
+            vsystem_sjbEntities ent = new vsystem_sjbEntities();
         }
     }
 }

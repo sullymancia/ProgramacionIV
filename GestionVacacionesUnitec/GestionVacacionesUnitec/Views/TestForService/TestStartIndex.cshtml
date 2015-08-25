@@ -6,34 +6,34 @@
 
 
 <!DOCTYPE html>
-
 <html>
 <head>
-    <meta name="viewport" content="width=device-width" />
-    <script src="@Url.Content("~/Scripts/jquery-2.0.3.js")"></script>
-    <script src="js/jquery.min.js"></script>
-    <script src="js/jquery-ui.custom.min.js"></script> 
-    <title>TestStartIndex</title>
+    <meta charset="UTF-8">
+    <title>Form</title>
+
+
+
 </head>
 <body>
-    <div> @Html.ActionLink("Correr", "Login")
-         <button>
-             
-         </button>
-
-        <form action="/" method="post">
-
-            <input type="text" name="name" value=" " />
-
-            <a href="/TestForService/Login">this is correr</a>
-            <a href="#" id="testlink">This is my test link</a>
+    <div class='form animated flipInX'>
+        <h2>Inicie Sesion Unitec <img src="images/logounitecpeque.jpg" /></h2>
+        <form>
+            <input placeholder='talento_humano' type='talento_humano'></br></br>
+            <input placeholder='email' type='email'></br></br>
+            <input placeholder='password' type='password'></br></br>
+            <input placeholder='primer_nombre' type='primer_nombre'></br></br>
+            <input placeholder='segundo_nombre' type='segundo_nombre'></br></br>
+            <input placeholder='primer_apellido' type='primer_apellido'></br></br>
+            <input placeholder='segundo_apellido' type='segundo_apellido'></br></br>
+            <input placeholder='fecha_ingreso' type='fecha_ingreso'></br></br>
+            <input placeholder='fecha_creacion' type='fecha_creacion'></br></br>
+            <input type="checkbox" value='activo'></br></br>
+            <button class='animated pulse' onclick="">Crear</button>
         </form>
-
-
-        
     </div>
-        
-    <script src="@Url.Content("~/Scripts/JavaScript1.js")"></script>
+
+
+
 
 </body>
 </html>

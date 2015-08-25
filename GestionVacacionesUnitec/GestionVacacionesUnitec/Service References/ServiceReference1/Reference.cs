@@ -120,16 +120,46 @@ namespace GestionVacacionesUnitec.ServiceReference1 {
         System.Threading.Tasks.Task<GestionVacacionesUnitec.ServiceReference1.CompositeType> GetDataUsingDataContractAsync(GestionVacacionesUnitec.ServiceReference1.CompositeType composite);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/agregarUsuario", ReplyAction="http://tempuri.org/IService1/agregarUsuarioResponse")]
-        void agregarUsuario();
+        void agregarUsuario(string talentoH, string correo, string password, string nombre1, string nombre2, string apellido1, string apellido2, string fechaIngreso, string fechaCreacion, bool activo);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/agregarUsuario", ReplyAction="http://tempuri.org/IService1/agregarUsuarioResponse")]
-        System.Threading.Tasks.Task agregarUsuarioAsync();
+        System.Threading.Tasks.Task agregarUsuarioAsync(string talentoH, string correo, string password, string nombre1, string nombre2, string apellido1, string apellido2, string fechaIngreso, string fechaCreacion, bool activo);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/LogInUsuario", ReplyAction="http://tempuri.org/IService1/LogInUsuarioResponse")]
         GestionVacacionesUnitec.ServiceReference1.Usuario LogInUsuario(string email, string password);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/LogInUsuario", ReplyAction="http://tempuri.org/IService1/LogInUsuarioResponse")]
         System.Threading.Tasks.Task<GestionVacacionesUnitec.ServiceReference1.Usuario> LogInUsuarioAsync(string email, string password);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/agregarDepartamento", ReplyAction="http://tempuri.org/IService1/agregarDepartamentoResponse")]
+        void agregarDepartamento(string ID, string descripcion, bool activo);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/agregarDepartamento", ReplyAction="http://tempuri.org/IService1/agregarDepartamentoResponse")]
+        System.Threading.Tasks.Task agregarDepartamentoAsync(string ID, string descripcion, bool activo);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/agregarRol", ReplyAction="http://tempuri.org/IService1/agregarRolResponse")]
+        void agregarRol(string ID, string descripcion, bool activo);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/agregarRol", ReplyAction="http://tempuri.org/IService1/agregarRolResponse")]
+        System.Threading.Tasks.Task agregarRolAsync(string ID, string descripcion, bool activo);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/Rol_Usuario", ReplyAction="http://tempuri.org/IService1/Rol_UsuarioResponse")]
+        void Rol_Usuario(string ID_rol, string ID_permiso);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/Rol_Usuario", ReplyAction="http://tempuri.org/IService1/Rol_UsuarioResponse")]
+        System.Threading.Tasks.Task Rol_UsuarioAsync(string ID_rol, string ID_permiso);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/Usuario_Departamento", ReplyAction="http://tempuri.org/IService1/Usuario_DepartamentoResponse")]
+        void Usuario_Departamento(string Talento_Humano, string ID_departamento);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/Usuario_Departamento", ReplyAction="http://tempuri.org/IService1/Usuario_DepartamentoResponse")]
+        System.Threading.Tasks.Task Usuario_DepartamentoAsync(string Talento_Humano, string ID_departamento);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/Usuario_Rol", ReplyAction="http://tempuri.org/IService1/Usuario_RolResponse")]
+        void Usuario_Rol(string Talento_Humano, string ID_rol);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/Usuario_Rol", ReplyAction="http://tempuri.org/IService1/Usuario_RolResponse")]
+        System.Threading.Tasks.Task Usuario_RolAsync(string Talento_Humano, string ID_rol);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -175,12 +205,12 @@ namespace GestionVacacionesUnitec.ServiceReference1 {
             return base.Channel.GetDataUsingDataContractAsync(composite);
         }
         
-        public void agregarUsuario() {
-            base.Channel.agregarUsuario();
+        public void agregarUsuario(string talentoH, string correo, string password, string nombre1, string nombre2, string apellido1, string apellido2, string fechaIngreso, string fechaCreacion, bool activo) {
+            base.Channel.agregarUsuario(talentoH, correo, password, nombre1, nombre2, apellido1, apellido2, fechaIngreso, fechaCreacion, activo);
         }
         
-        public System.Threading.Tasks.Task agregarUsuarioAsync() {
-            return base.Channel.agregarUsuarioAsync();
+        public System.Threading.Tasks.Task agregarUsuarioAsync(string talentoH, string correo, string password, string nombre1, string nombre2, string apellido1, string apellido2, string fechaIngreso, string fechaCreacion, bool activo) {
+            return base.Channel.agregarUsuarioAsync(talentoH, correo, password, nombre1, nombre2, apellido1, apellido2, fechaIngreso, fechaCreacion, activo);
         }
         
         public GestionVacacionesUnitec.ServiceReference1.Usuario LogInUsuario(string email, string password) {
@@ -189,6 +219,46 @@ namespace GestionVacacionesUnitec.ServiceReference1 {
         
         public System.Threading.Tasks.Task<GestionVacacionesUnitec.ServiceReference1.Usuario> LogInUsuarioAsync(string email, string password) {
             return base.Channel.LogInUsuarioAsync(email, password);
+        }
+        
+        public void agregarDepartamento(string ID, string descripcion, bool activo) {
+            base.Channel.agregarDepartamento(ID, descripcion, activo);
+        }
+        
+        public System.Threading.Tasks.Task agregarDepartamentoAsync(string ID, string descripcion, bool activo) {
+            return base.Channel.agregarDepartamentoAsync(ID, descripcion, activo);
+        }
+        
+        public void agregarRol(string ID, string descripcion, bool activo) {
+            base.Channel.agregarRol(ID, descripcion, activo);
+        }
+        
+        public System.Threading.Tasks.Task agregarRolAsync(string ID, string descripcion, bool activo) {
+            return base.Channel.agregarRolAsync(ID, descripcion, activo);
+        }
+        
+        public void Rol_Usuario(string ID_rol, string ID_permiso) {
+            base.Channel.Rol_Usuario(ID_rol, ID_permiso);
+        }
+        
+        public System.Threading.Tasks.Task Rol_UsuarioAsync(string ID_rol, string ID_permiso) {
+            return base.Channel.Rol_UsuarioAsync(ID_rol, ID_permiso);
+        }
+        
+        public void Usuario_Departamento(string Talento_Humano, string ID_departamento) {
+            base.Channel.Usuario_Departamento(Talento_Humano, ID_departamento);
+        }
+        
+        public System.Threading.Tasks.Task Usuario_DepartamentoAsync(string Talento_Humano, string ID_departamento) {
+            return base.Channel.Usuario_DepartamentoAsync(Talento_Humano, ID_departamento);
+        }
+        
+        public void Usuario_Rol(string Talento_Humano, string ID_rol) {
+            base.Channel.Usuario_Rol(Talento_Humano, ID_rol);
+        }
+        
+        public System.Threading.Tasks.Task Usuario_RolAsync(string Talento_Humano, string ID_rol) {
+            return base.Channel.Usuario_RolAsync(Talento_Humano, ID_rol);
         }
     }
 }

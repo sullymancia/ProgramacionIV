@@ -18,10 +18,25 @@ namespace WcfServiceLibrary_sjb
         CompositeType GetDataUsingDataContract(CompositeType composite);
 
         [OperationContract]
-        void agregarUsuario();
+        void agregarUsuario(string talentoH, string correo, string password, string nombre1, string nombre2, string apellido1, string apellido2, string fechaIngreso, string fechaCreacion, bool activo);
 
         [OperationContract]
         Usuario LogInUsuario(string email , string password);
+
+        [OperationContract]
+        void agregarDepartamento(string ID, string descripcion, bool activo);
+
+        [OperationContract]
+        void agregarRol(string ID, string descripcion, bool activo);
+
+        [OperationContract]
+        void Rol_Usuario(string ID_rol, string ID_permiso);
+
+        [OperationContract]
+        void Usuario_Departamento(string Talento_Humano, string ID_departamento);
+
+        [OperationContract]
+        void Usuario_Rol(string Talento_Humano, string ID_rol);
 
         // TODO: Add your service operations here
     }
