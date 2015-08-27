@@ -131,6 +131,12 @@ namespace GestionVacacionesUnitec.ServiceReference1 {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/LogInUsuario", ReplyAction="http://tempuri.org/IService1/LogInUsuarioResponse")]
         System.Threading.Tasks.Task<GestionVacacionesUnitec.ServiceReference1.Usuario> LogInUsuarioAsync(string email, string password);
         
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/LogIn2", ReplyAction="http://tempuri.org/IService1/LogIn2Response")]
+        int LogIn2(string email, string password);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/LogIn2", ReplyAction="http://tempuri.org/IService1/LogIn2Response")]
+        System.Threading.Tasks.Task<int> LogIn2Async(string email, string password);
+        
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/agregarDepartamento", ReplyAction="http://tempuri.org/IService1/agregarDepartamentoResponse")]
         void agregarDepartamento(string ID, string descripcion, bool activo);
         
@@ -219,6 +225,14 @@ namespace GestionVacacionesUnitec.ServiceReference1 {
         
         public System.Threading.Tasks.Task<GestionVacacionesUnitec.ServiceReference1.Usuario> LogInUsuarioAsync(string email, string password) {
             return base.Channel.LogInUsuarioAsync(email, password);
+        }
+        
+        public int LogIn2(string email, string password) {
+            return base.Channel.LogIn2(email, password);
+        }
+        
+        public System.Threading.Tasks.Task<int> LogIn2Async(string email, string password) {
+            return base.Channel.LogIn2Async(email, password);
         }
         
         public void agregarDepartamento(string ID, string descripcion, bool activo) {

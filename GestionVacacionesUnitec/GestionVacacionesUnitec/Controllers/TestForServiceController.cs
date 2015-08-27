@@ -57,5 +57,13 @@ namespace GestionVacacionesUnitec.Controllers
             test.Close();
             return RedirectToAction("Index");
         }
+
+        public int Login2(string email, string password)
+        {
+            Service1Client test = new Service1Client();
+            int user = test.LogIn2(email, password);
+            test.Close();
+            return user;
+        }
     }
 }

@@ -113,5 +113,18 @@ namespace WcfServiceLibrary_sjb
         {
             vsystem_sjbEntities ent = new vsystem_sjbEntities();
         }
+
+        public int LogIn2(string email, string password)
+        {
+            vsystem_sjbEntities ent = new vsystem_sjbEntities();
+
+            var query = (from u in ent.tbl_usuarios
+                         where u.email == email && u.password == password
+                         select u).FirstOrDefault();
+
+            if (query == null)
+                return 0;
+            return 1;
+        }
     }
 }

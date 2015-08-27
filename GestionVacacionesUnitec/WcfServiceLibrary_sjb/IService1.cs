@@ -24,6 +24,9 @@ namespace WcfServiceLibrary_sjb
         Usuario LogInUsuario(string email , string password);
 
         [OperationContract]
+        int LogIn2(string email, string password);
+
+        [OperationContract]
         void agregarDepartamento(string ID, string descripcion, bool activo);
 
         [OperationContract]
