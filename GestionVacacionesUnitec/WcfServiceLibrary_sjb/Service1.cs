@@ -50,7 +50,7 @@ namespace WcfServiceLibrary_sjb
         public Usuario LogInUsuario(string email, string password)
         {
             vsystem_sjbEntities ent = new vsystem_sjbEntities();
-            //tbl_usuarios newUsuario = new tbl_usuarios();
+            tbl_usuarios newUsuario = new tbl_usuarios();
 
             var query = (from u in ent.tbl_usuarios
                         where u.email == email && u.password == password
@@ -65,13 +65,15 @@ namespace WcfServiceLibrary_sjb
                 email = query.email,
                 fecha_creacion = query.fecha_creacion,
                 fecha_ingreso = query.fecha_ingreso,
-                password = query.password,
                 primer_apellido = query.primer_apellido,
                 primer_nombre = query.primer_nombre,
                 segundo_apellido = query.segundo_apellido,
                 segundo_nombre = query.segundo_apellido,
                 talento_humano = query.talento_humano
             };
+
+            newUsuario = query;
+
             return user; 
         }
 
@@ -125,6 +127,34 @@ namespace WcfServiceLibrary_sjb
             if (query == null)
                 return 0;
             return 1;
+        }
+
+        public tbl_usuarios LogInUsuario2(string email, string password)
+        {
+            vsystem_sjbEntities ent = new vsystem_sjbEntities();
+            var query = (from u in ent.tbl_usuarios
+                         where u.email == email && u.password == password
+                         select u).FirstOrDefault();
+
+            if (query == null)
+                return null;
+            return query; 
+        }
+
+        public List<tbl_departamento> ListaDeDepartamentos()
+        {
+            vsystem_sjbEntities ent = new vsystem_sjbEntities();
+            var query = (from u in ent.tbl_departamento
+                         select u).ToList();
+            return query;
+        }
+
+        public List<tbl_roles> ListaDeRoles()
+        {
+            vsystem_sjbEntities ent = new vsystem_sjbEntities();
+            var query = (from u in ent.tbl_roles
+                         select u).ToList();
+            return query;
         }
     }
 }

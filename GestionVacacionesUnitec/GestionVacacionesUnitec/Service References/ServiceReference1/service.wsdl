@@ -67,6 +67,24 @@
   <wsdl:message name="IService1_Usuario_Rol_OutputMessage">
     <wsdl:part name="parameters" element="tns:Usuario_RolResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_LogInUsuario2_InputMessage">
+    <wsdl:part name="parameters" element="tns:LogInUsuario2" />
+  </wsdl:message>
+  <wsdl:message name="IService1_LogInUsuario2_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LogInUsuario2Response" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ListaDeDepartamentos_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListaDeDepartamentos" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ListaDeDepartamentos_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListaDeDepartamentosResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ListaDeRoles_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListaDeRoles" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ListaDeRoles_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListaDeRolesResponse" />
+  </wsdl:message>
   <wsdl:portType name="IService1">
     <wsdl:operation name="GetData">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetData" message="tns:IService1_GetData_InputMessage" />
@@ -107,6 +125,18 @@
     <wsdl:operation name="Usuario_Rol">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/Usuario_Rol" message="tns:IService1_Usuario_Rol_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/Usuario_RolResponse" message="tns:IService1_Usuario_Rol_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="LogInUsuario2">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/LogInUsuario2" message="tns:IService1_LogInUsuario2_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/LogInUsuario2Response" message="tns:IService1_LogInUsuario2_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListaDeDepartamentos">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/ListaDeDepartamentos" message="tns:IService1_ListaDeDepartamentos_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/ListaDeDepartamentosResponse" message="tns:IService1_ListaDeDepartamentos_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListaDeRoles">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/ListaDeRoles" message="tns:IService1_ListaDeRoles_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/ListaDeRolesResponse" message="tns:IService1_ListaDeRoles_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
@@ -194,6 +224,33 @@
     </wsdl:operation>
     <wsdl:operation name="Usuario_Rol">
       <soap:operation soapAction="http://tempuri.org/IService1/Usuario_Rol" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="LogInUsuario2">
+      <soap:operation soapAction="http://tempuri.org/IService1/LogInUsuario2" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListaDeDepartamentos">
+      <soap:operation soapAction="http://tempuri.org/IService1/ListaDeDepartamentos" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListaDeRoles">
+      <soap:operation soapAction="http://tempuri.org/IService1/ListaDeRoles" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

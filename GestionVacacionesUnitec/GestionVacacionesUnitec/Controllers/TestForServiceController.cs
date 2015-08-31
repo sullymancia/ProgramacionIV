@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Services;
 using GestionVacacionesUnitec.ServiceReference1;
 
 namespace GestionVacacionesUnitec.Controllers
@@ -12,7 +13,13 @@ namespace GestionVacacionesUnitec.Controllers
         // GET: TestForService
         public ActionResult Index()
         {
-            return View("TestStartIndex");
+            return View("login");
+        }
+
+        // GET: TestForService
+        public ActionResult Dashboard()
+        {
+            return View("Index");
         }
 
         [HttpPost]
@@ -24,7 +31,7 @@ namespace GestionVacacionesUnitec.Controllers
 
         public RedirectToRouteResult Login(string email, string password)
         {
-            Service1Client test = new Service1Client();
+            /*Service1Client test = new Service1Client();
             Usuario user = test.LogInUsuario(email, password);
             test.Close();
             if (user != null)
@@ -32,38 +39,27 @@ namespace GestionVacacionesUnitec.Controllers
                 Session["Secion"] = user;
                 return RedirectToAction("Index", "LoginTest");
             }
-            else
+            else*/
                 return RedirectToAction("Index");
         }
-        public RedirectToRouteResult crearUser(string talentoH, string correo, string password, string nombre1, string nombre2, string apellido1, string apellido2, string fechaIngreso, string fechaCreacion, bool activo)
+
+        [HttpPost]
+        public ActionResult Login2(string email, string password)
         {
             Service1Client test = new Service1Client();
-            test.agregarUsuario(talentoH, correo, password, nombre1, nombre2, apellido1, apellido2, fechaIngreso, fechaCreacion, activo);
+            int requestStatus = test.LogIn2(email, password);
+            Usuario currentUser = test.LogInUsuario(email, password);
+            
+            Session["Secion2"] = currentUser;
             test.Close();
-            return RedirectToAction("Index");
-        }
-        public RedirectToRouteResult crearDepartamento(string ID, string descripcion, bool activo)
-        {
-            Service1Client test = new Service1Client();
-            test.agregarDepartamento(ID, descripcion, activo);
-            test.Close();
-            return RedirectToAction("Index");
+            
+            return Json(new
+            {
+                status = requestStatus,
+                url = "test url"
+            });
         }
 
-        public RedirectToRouteResult crearRol(string ID, string descripcion, bool activo)
-        {
-            Service1Client test = new Service1Client();
-            test.agregarRol(ID, descripcion, activo);
-            test.Close();
-            return RedirectToAction("Index");
-        }
-
-        public int Login2(string email, string password)
-        {
-            Service1Client test = new Service1Client();
-            int user = test.LogIn2(email, password);
-            test.Close();
-            return user;
-        }
+        
     }
 }

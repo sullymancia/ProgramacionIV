@@ -87,23 +87,64 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\fonts\Jenna Sue Design Font License.txt" />
+    <Content Include="Content\fonts\News Cycle SIL OFL Font License 1.1.txt" />
+    <Content Include="Content\images\arrows-white.png" />
+    <Content Include="Content\images\background-photo-mobile-devices.jpg" />
+    <Content Include="Content\images\background-photo.jpg" />
+    <Content Include="Content\images\bg.jpg" />
+    <Content Include="Content\images\day-bg-inactive.png" />
+    <Content Include="Content\images\footer.jpg" />
+    <Content Include="Content\images\LineaAzulRoja.jpg" />
+    <Content Include="Content\images\logouniteclogin.jpg" />
+    <Content Include="Content\images\logounitecpeque.jpg" />
+    <Content Include="Content\images\pattern.jpg" />
+    <Content Include="Content\images\profile.png" />
+    <Content Include="Content\images\tl.png" />
+    <Content Include="Content\images\transparent.png" />
+    <Content Include="Content\js\image_fade.js" />
+    <Content Include="Content\js\jquery.easing-sooper.js" />
+    <Content Include="Content\js\jquery.js" />
+    <Content Include="Content\js\jquery.kwicks-1.5.1.js" />
+    <Content Include="Content\js\jquery.sooperfish.js" />
+    <Content Include="Content\js\modernizr-1.5.min.js" />
+    <Content Include="Content\logincss.css" />
+    <Content Include="Content\style.css" />
+    <Content Include="Content\stylesmenu.css" />
     <Content Include="Global.asax" />
+    <Content Include="Content\fonts\DroidSans-webfont.eot" />
+    <Content Include="Content\fonts\DroidSans-webfont.woff" />
+    <Content Include="Content\fonts\JennaSue-webfont.eot" />
+    <Content Include="Content\fonts\JennaSue-webfont.ttf" />
+    <Content Include="Content\fonts\NewsCycle-Regular.eot" />
+    <Content Include="Content\fonts\NewsCycle-Regular.ttf" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="Scripts\JavaScript1.js" />
+    <Content Include="Scripts\CreateUserForm.js" />
+    <Content Include="Scripts\Dashboard.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
-    <None Include="Service References\ServiceReference1\configuration91.svcinfo" />
-    <None Include="Service References\ServiceReference1\configuration.svcinfo" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\Login.js" />
+    <None Include="Service References\ServiceReference1\configuration91.svcinfo" />
+    <None Include="Service References\ServiceReference1\configuration.svcinfo" />
     <Content Include="Service References\ServiceReference1\GestionVacacionesUnitec.ServiceReference1.CompositeType.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
+    <Content Include="Service References\ServiceReference1\GestionVacacionesUnitec.ServiceReference1.tbl_usuarios.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
     <Content Include="Service References\ServiceReference1\GestionVacacionesUnitec.ServiceReference1.Usuario.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\ServiceReference1\GestionVacacionesUnitec.ServiceReference1.tbl_departamento.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Content>
+    <Content Include="Service References\ServiceReference1\GestionVacacionesUnitec.ServiceReference1.tbl_roles.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Content>
     <None Include="Service References\ServiceReference1\Reference.svcmap">
@@ -114,6 +155,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\FormController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginTestController.cs" />
     <Compile Include="Controllers\TestForServiceController.cs" />
@@ -130,6 +172,10 @@
   <ItemGroup>
     <Content Include="Views\web.config" />
     <Content Include="packages.config" />
+    <Content Include="Views\LoginTest\TestIndex.cshtml" />
+    <Content Include="Views\LoginTest\Test2Index.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\TestForService\login.cshtml" />
     <None Include="Service References\ServiceReference1\service.wsdl" />
     <None Include="Service References\ServiceReference1\service.xsd">
       <SubType>Designer</SubType>
@@ -140,10 +186,11 @@
     <None Include="Service References\ServiceReference1\WcfServiceLibrary_sjb.xsd">
       <SubType>Designer</SubType>
     </None>
-    <Content Include="Views\LoginTest\TestIndex.cshtml" />
-    <Content Include="Views\TestForService\TestStartIndex.cshtml" />
-    <Content Include="Views\LoginTest\Test2Index.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\TestForService\CreateUserForm.cshtml" />
+    <Content Include="Views\Home\DashBoard.cshtml" />
+    <Content Include="Views\Form\ViewCrearUsuario.cshtml" />
+    <Content Include="Views\Form\ViewCrearDepartamento.cshtml" />
+    <Content Include="Views\Form\ViewCrearRol.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

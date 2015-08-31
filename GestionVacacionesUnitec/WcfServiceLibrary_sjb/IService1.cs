@@ -41,6 +41,15 @@ namespace WcfServiceLibrary_sjb
         [OperationContract]
         void Usuario_Rol(string Talento_Humano, string ID_rol);
 
+        [OperationContract]
+        tbl_usuarios LogInUsuario2(string email, string password);
+
+        [OperationContract]
+        List<tbl_departamento> ListaDeDepartamentos();
+
+        [OperationContract]
+        List<tbl_roles> ListaDeRoles();
+
         // TODO: Add your service operations here
     }
 
@@ -78,7 +87,69 @@ namespace WcfServiceLibrary_sjb
         public string segundo_apellido { get; set; }
         public System.DateTime fecha_ingreso { get; set; }
         public System.DateTime fecha_creacion { get; set; }
-        public string password { get; set; }
         public bool activo { get; set; }
+
+
+        [DataMember]
+        public int Talento_Humano
+        {
+            get { return talento_humano; }
+            set { talento_humano = value; }
+        }
+
+        [DataMember]
+        public string Email
+        {
+            get { return email; }
+            set { email = value; }
+        }
+
+        [DataMember]
+        public string Primer_Nombre
+        {
+            get { return primer_nombre; }
+            set { primer_nombre = value; }
+        }
+
+        [DataMember]
+        public string Segundo_Nombre
+        {
+            get { return segundo_nombre; }
+            set { segundo_nombre = value; }
+        }
+
+        [DataMember]
+        public string Primer_Apellido
+        {
+            get { return primer_apellido; }
+            set { primer_apellido = value; }
+        }
+
+        [DataMember]
+        public string Segundo_Apellido
+        {
+            get { return segundo_apellido; }
+            set { segundo_apellido = value; }
+        }
+
+        [DataMember]
+        public System.DateTime Fecha_Ingreso
+        {
+            get { return fecha_ingreso; }
+            set { fecha_ingreso = value; }
+        }
+
+        [DataMember]
+        public System.DateTime Fecha_Creacion
+        {
+            get { return fecha_creacion; }
+            set { fecha_creacion = value; }
+        }
+
+        public bool Activo
+        {
+            get { return activo; }
+            set { activo = value; }
+        }
     }
 }
