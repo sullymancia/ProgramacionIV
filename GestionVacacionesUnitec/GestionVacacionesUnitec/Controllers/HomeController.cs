@@ -25,8 +25,26 @@ namespace GestionVacacionesUnitec.Controllers
             {
                 name = currentUser.Primer_Nombre,
                 lastName = currentUser.Primer_Apellido,
-                email = currentUser.Email
+                email = currentUser.Email,
+                talentoHumano = currentUser.Talento_Humano
             });
+        }
+
+      [HttpPost]
+        public ActionResult getRolesPorUsuario(string talento_humano)
+        {
+            Service1Client test = new Service1Client();
+            //tbl_roles[] _roles = test.ListaDeRolesPorUsuario(talento_humano);
+            test.Close();
+            int numero;
+
+            
+
+            return Json(new
+            {
+                roles = "place holder"
+            });
+            
         }
     }
 }

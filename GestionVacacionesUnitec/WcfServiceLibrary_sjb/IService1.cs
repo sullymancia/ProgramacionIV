@@ -33,13 +33,13 @@ namespace WcfServiceLibrary_sjb
         void agregarRol(string ID, string descripcion, bool activo);
 
         [OperationContract]
-        void Rol_Usuario(string ID_rol, string ID_permiso);
+        void Rol_Permiso(string ID_rol, string ID_permiso);
 
         [OperationContract]
-        void Usuario_Departamento(string Talento_Humano, string ID_departamento);
+        void Usuario_Departamento(string Talento_Humano, string descripcion_departamento);
 
         [OperationContract]
-        void Usuario_Rol(string Talento_Humano, string ID_rol);
+        void Usuario_Rol(string Talento_Humano, string descripcion_rol);
 
         [OperationContract]
         tbl_usuarios LogInUsuario2(string email, string password);
@@ -49,6 +49,9 @@ namespace WcfServiceLibrary_sjb
 
         [OperationContract]
         List<tbl_roles> ListaDeRoles();
+
+        [OperationContract]
+        List<tbl_roles> ListaDeRolesPorUsuario(string talento_humano);
 
         // TODO: Add your service operations here
     }

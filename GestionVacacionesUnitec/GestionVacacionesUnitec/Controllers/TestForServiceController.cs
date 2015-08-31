@@ -56,7 +56,7 @@ namespace GestionVacacionesUnitec.Controllers
             return Json(new
             {
                 status = requestStatus,
-                url = "test url"
+                url = "Home/Index"
             });
         }
 

@@ -1,22 +1,42 @@
 ﻿$(document).ready(function () {
 
-    $talentoHumanoInput  = $("#talentoHumano");
-    $emailInput          = $("#email");
-    $passwordInput       = $("#password");
-    $firstNameInput      = $("#firstName");
-    $middleNameInput     = $("#middleName");
-    $lasNameInput        = $("#lastName");
-    $secondLastNameInput = $("#secondLastName");
-    $signUpDateInput     = $("#signUpDate");
-    $employmentDateInput = $("#employmentDate");
-    $activeInput         = $("#active");
-    $submitUserButton    = $("#submitUser");
+    console.log("Create user form script");
+    var $talentoHumanoInput   = $("#talentoHumano");
+    var $emailInput           = $("#email");
+    var $passwordInput        = $("#password");
+    var $firstNameInput       = $("#firstName");
+    var $middleNameInput      = $("#middleName");
+    var $lasNameInput         = $("#lastName");
+    var $secondLastNameInput  = $("#secondLastName");
+    var $signUpDateInput      = $("#signUpDate");
+    var $employmentDateInput  = $("#employmentDate");
+    var $activeInput          = $("#active");
+    var $submitUserButton     = $("#submitUser");
+    var $roleCheckBoxes       = $(".role");
+    var $departmentCheckBoxes = $(".department");
+    var currentSessionId;
 
+    console.log("Role checkboxes : " + $roleCheckBoxes.size());
+    console.log("Department checkboxes : " + $departmentCheckBoxes.size());
 
+    
+
+    //Retrieve session
+    var url = 'http://localhost:1755/Form/getSession';
+    var ajaxRequestForSession = $.post(url, function (session) {
+
+        console.log("Session name : " + session.name);
+        console.log("Session ID : " + session.talentoHumano);
+        currentSessionId = session.talentoHumano;
+
+    });
+    
     //on submit form clicked
-    $submitUserButton.on('click', function (e) {
+    $submitUserButton.click( function (e) {
         e.preventDefault();
+        console.log("Current Session ID : " + currentSessionId);
 
+        // Get values from first form
         var talentoHumano  = $talentoHumanoInput.val();
         var email          = $emailInput.val();
         var password       = $passwordInput.val();
@@ -28,12 +48,42 @@
         var employmentDate = $employmentDateInput.val();
         var active         = $activeInput.is(':checked') ? 1 : 0;
 
+
+        // Get values from second form
+        var roles       = "";
+        var departments = "";
+
+        var numberOfRoles = 0;
+        var numberOfDepartments = 0;
+
+        $roleCheckBoxes.each(function (index) {
+            $thisCheckBox = $(this);
+            if ($thisCheckBox.is(':checked'))
+            {
+                if (numberOfRoles != 0)
+                    roles += "~";
+                roles += $thisCheckBox.attr("name");
+                numberOfRoles++;
+            }
+        });
+
+        // Get values from third form
+        $departmentCheckBoxes.each(function (index) {
+            $thisCheckBox = $(this);
+            if ($thisCheckBox.is(':checked')) {
+                if (numberOfDepartments != 0)
+                    departments += "~";
+                departments += $thisCheckBox.attr("name");
+                numberOfDepartments++;
+            }
+        });
+
         console.log("--------------------------");
 
-
-           var url = ' http://localhost:1755/TestForService/crearUser';
+           //posting User Creation Form
+           var urlCreateUser = ' http://localhost:1755/Form/crearUser';
            var ajaxRequest = $.post(
-               url,
+               urlCreateUser,
                {
                    talentoH: talentoHumano,
                    correo: email,
@@ -44,7 +94,7 @@
                    apellido2: secondLastName,
                    fechaIngreso: employmentDate,
                    fechaCreacion: signUpDate,
-                   activo : active
+                   activo: active
                },
               function (data) {
                   console.log("Talento Humano : " + talentoHumano);
@@ -56,21 +106,41 @@
                   console.log("Second Last Name : " + secondLastName);
                   console.log("Creation Date : " + employmentDate);
                   console.log("Sign Up Date : " + signUpDate);
-                  console.log("Active User : " + active);
-              });
+                  console.log("Active User : " + active);    
+       });
+        
+        
+        //posting Roles Form
+           var urlCreateUserRole = ' http://localhost:1755/Form/Usuario_Rol';
+           var ajaxRequestRoles = $.post(
+           urlCreateUserRole,
+           {
+               Talento_Humano: talentoHumano,
+               descripcion_rol: roles
+           },
+           function () {
+               console.log("Talento Humano Roles : " + talentoHumano);
+               console.log("Roles : " + roles);
+        });
+
+        //posting Departments Form
+           var urlCreateUserDepartment = ' http://localhost:1755/Form/Usuario_Departamento';
+           var ajaxRequestDepartment = $.post(
+           urlCreateUserDepartment,
+           {
+               Talento_Humano: talentoHumano,
+               descripcion_departamento: departments
+           },
+           function () {
+               console.log("Talento Humano Department : " + talentoHumano);
+               console.log("Departments : " + departments);
+        });
     });
-
 });
 
 
-//Roles
-/*
-$roleCheckbox        = $(".roleCheckbox:checked");
-var roles = {};
-roleCheckbox.each( function(index){
-var $thisCheckbox = $(this);
-var role          = $thisCheckbox.val()
-roles.push(role);
-console.log("Role : " + role + " | index : " + );
-});
-*/
+
+
+
+                  
+   

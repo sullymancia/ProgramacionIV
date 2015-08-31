@@ -108,7 +108,7 @@
       <xs:sequence />
     </xs:complexType>
   </xs:element>
-  <xs:element name="Rol_Usuario">
+  <xs:element name="Rol_Permiso">
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="ID_rol" nillable="true" type="xs:string" />
@@ -116,7 +116,7 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="Rol_UsuarioResponse">
+  <xs:element name="Rol_PermisoResponse">
     <xs:complexType>
       <xs:sequence />
     </xs:complexType>
@@ -125,7 +125,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="Talento_Humano" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="ID_departamento" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="descripcion_departamento" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -138,7 +138,7 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element minOccurs="0" name="Talento_Humano" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="ID_rol" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="descripcion_rol" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -183,6 +183,20 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/WcfServiceLibrary_sjb" minOccurs="0" name="ListaDeRolesResult" nillable="true" type="q6:ArrayOftbl_roles" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListaDeRolesPorUsuario">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="talento_humano" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListaDeRolesPorUsuarioResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/WcfServiceLibrary_sjb" minOccurs="0" name="ListaDeRolesPorUsuarioResult" nillable="true" type="q7:ArrayOftbl_roles" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

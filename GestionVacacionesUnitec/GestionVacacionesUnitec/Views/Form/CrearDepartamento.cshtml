@@ -15,6 +15,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <script src="script.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
 
     <script type="text/javascript" src="js/modernizr-1.5.min.js"></script>
 </head>
@@ -33,7 +34,7 @@
             <nav>
                 <div id='cssmenu'>
                     <ul>
-                        <li><a href='~/Views/Home/DashBoard.cshtml'><span>Inicio</span></a></li>
+                        <li><a href='http://localhost:1755/Home/Index'><span>Inicio</span></a></li>
                         <li><a href='#'><span>Solicitudes</span></a></li>
                         <li> <a href='calendar.html'><span>Calendario</span></a> </li>
                         <li><a href='http://localhost:1755/Form/ViewCrearUsuario'><span>Crear Usuario</span></a></li>
@@ -46,45 +47,14 @@
 
     </div>
     <div id="site_content">
-        <div id="sidebar_container">
-            <div class="gallery">
-                <ul class="images">
-
-                    <table style="width:330px" border="1">
-                        <tr>
-                            <td><center><img src="~/Content/images/profile.png" width="90px" height="125px"></center>
-                                <p id="welcome">Bienvenido <br /> </p>
-                            </td>
-                        </tr>
-                        
-                        <tr>
-                            <td><center><a href="#"> Napky| Solicitud</a></center></td>
-                        </tr>
-                        <tr>
-                            <td><center><a href="#">Jesus Murillo| Solicitud</a></center></td>
-
-                        </tr>
-                        <tr>
-                            <td><center><a href="#">Sully Mancia| Solicitud</a></center></td>
-                        </tr>
-                        <tr>
-                            <td><center><a href="#">Josue Enamorado| Solicitud</a></center></td>
-                        </tr>
-                        <tr>
-                            <td><center><a href="#">Daniel Zelaya| Solicitud</a></center></td>
-                        </tr>
-                        <tr>
-                            <td><center><a href="#">Alejandro Ferrera| Solicitud</a></center></td>
-                        </tr>
-
-                    </table>
-
-
-                </ul>
-            </div>
-        </div>
-        <div id="content">
-            <p><iframe width="545" height="365" src="https://www.youtube.com/embed/udughzlN5M4" frameborder="0" allowfullscreen></iframe></p>
+        <div id="site_creacion">
+            <form action="">
+                <h2>Crear Departamento</h2>
+                <h4>ID Departamento <input id="departmentID" placeholder='iddepto' type='iddepto'></h4>
+                <h4>Descripcion del depto <input id="departmentName" placeholder='desdepto' type='desdepto'></h4>
+                <h4>Activo / Inactivo  <input id="departmentActive" type="checkbox" value='activo'></h4>
+                <button id="submitDepartment">Crear Departamento</button>
+            </form>
         </div>
     </div>
 
@@ -93,13 +63,11 @@
     </div>
     <p>&nbsp;</p>
     <!-- javascript en la parte de abajo para que cargue mas rapido -->
-    <!-- okis, gracias por el comment Sully :* -->
-    
     <script type="text/javascript" src="js/jquery.js"></script>
     <script type="text/javascript" src="js/jquery.easing-sooper.js"></script>
     <script type="text/javascript" src="js/jquery.sooperfish.js"></script>
     <script type="text/javascript" src="js/image_fade.js"></script>
-    <script src="~/Scripts/Dashboard.js"></script>
+    <script src="~/Scripts/CreateDepartmentForm.js"></script>
     <script type="text/javascript">
     $(document).ready(function() {
       $('ul.sf-menu').sooperfish();

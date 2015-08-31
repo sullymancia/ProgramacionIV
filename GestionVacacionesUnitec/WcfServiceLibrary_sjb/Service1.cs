@@ -50,7 +50,7 @@ namespace WcfServiceLibrary_sjb
         public Usuario LogInUsuario(string email, string password)
         {
             vsystem_sjbEntities ent = new vsystem_sjbEntities();
-            tbl_usuarios newUsuario = new tbl_usuarios();
+            //tbl_usuarios newUsuario = new tbl_usuarios();
 
             var query = (from u in ent.tbl_usuarios
                         where u.email == email && u.password == password
@@ -72,7 +72,7 @@ namespace WcfServiceLibrary_sjb
                 talento_humano = query.talento_humano
             };
 
-            newUsuario = query;
+            //newUsuario = query;
 
             return user; 
         }
@@ -101,19 +101,43 @@ namespace WcfServiceLibrary_sjb
             ent.SaveChanges();
         }
 
-        public void Rol_Usuario(string ID_rol, string ID_permiso)
+        public void Rol_Permiso(string ID_rol, string ID_permiso)
         {
             vsystem_sjbEntities ent = new vsystem_sjbEntities();
         }
 
-        public void Usuario_Departamento(string Talento_Humano, string ID_departamento)
+        public void Usuario_Departamento(string Talento_Humano, string descripcion_departamento)
         {
             vsystem_sjbEntities ent = new vsystem_sjbEntities();
+            int _Talento_Humano = Int32.Parse(Talento_Humano);
+            var query = (from u in ent.tbl_usuarios
+                         where u.talento_humano == _Talento_Humano
+                         select u).FirstOrDefault();
+            int _descripcion_departamento = Int32.Parse(descripcion_departamento);
+            var query2 = (from u in ent.tbl_departamento
+                          where u.departamentoid == _descripcion_departamento
+                          select u).FirstOrDefault();
+            tbl_usuarios user = query;
+            tbl_departamento departamento = query2;
+            user.tbl_departamento.Add(departamento);
+            ent.SaveChanges();
         }
 
-        public void Usuario_Rol(string Talento_Humano, string ID_rol)
+        public void Usuario_Rol(string Talento_Humano, string descripcion_rol)
         {
             vsystem_sjbEntities ent = new vsystem_sjbEntities();
+            int _talentoHumano = Int32.Parse(Talento_Humano);
+            var query = (from u in ent.tbl_usuarios
+                         where u.talento_humano == _talentoHumano
+                         select u).FirstOrDefault();
+            int _descripcion_rol = Int32.Parse(descripcion_rol);
+            var query2 = (from u in ent.tbl_roles
+                          where u.rolesid == _descripcion_rol
+                         select u).FirstOrDefault();
+            tbl_usuarios user = query;
+            tbl_roles rol = query2;
+            user.tbl_roles.Add(rol);
+            ent.SaveChanges();
         }
 
         public int LogIn2(string email, string password)
@@ -155,6 +179,17 @@ namespace WcfServiceLibrary_sjb
             var query = (from u in ent.tbl_roles
                          select u).ToList();
             return query;
+        }
+
+        public List<tbl_roles> ListaDeRolesPorUsuario(string talento_humano)
+        {
+            vsystem_sjbEntities ent = new vsystem_sjbEntities();
+            int numero = Int32.Parse(talento_humano);
+            var query = (from u in ent.tbl_usuarios
+                         where u.talento_humano == numero
+                         select u).FirstOrDefault();
+            tbl_usuarios user = query;
+            return user.tbl_roles.ToList();
         }
     }
 }

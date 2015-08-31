@@ -1799,23 +1799,23 @@ namespace GestionVacacionesUnitec.ServiceReference1 {
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/agregarRol", ReplyAction="http://tempuri.org/IService1/agregarRolResponse")]
         System.Threading.Tasks.Task agregarRolAsync(string ID, string descripcion, bool activo);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/Rol_Usuario", ReplyAction="http://tempuri.org/IService1/Rol_UsuarioResponse")]
-        void Rol_Usuario(string ID_rol, string ID_permiso);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/Rol_Permiso", ReplyAction="http://tempuri.org/IService1/Rol_PermisoResponse")]
+        void Rol_Permiso(string ID_rol, string ID_permiso);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/Rol_Usuario", ReplyAction="http://tempuri.org/IService1/Rol_UsuarioResponse")]
-        System.Threading.Tasks.Task Rol_UsuarioAsync(string ID_rol, string ID_permiso);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/Usuario_Departamento", ReplyAction="http://tempuri.org/IService1/Usuario_DepartamentoResponse")]
-        void Usuario_Departamento(string Talento_Humano, string ID_departamento);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/Rol_Permiso", ReplyAction="http://tempuri.org/IService1/Rol_PermisoResponse")]
+        System.Threading.Tasks.Task Rol_PermisoAsync(string ID_rol, string ID_permiso);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/Usuario_Departamento", ReplyAction="http://tempuri.org/IService1/Usuario_DepartamentoResponse")]
-        System.Threading.Tasks.Task Usuario_DepartamentoAsync(string Talento_Humano, string ID_departamento);
+        void Usuario_Departamento(string Talento_Humano, string descripcion_departamento);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/Usuario_Departamento", ReplyAction="http://tempuri.org/IService1/Usuario_DepartamentoResponse")]
+        System.Threading.Tasks.Task Usuario_DepartamentoAsync(string Talento_Humano, string descripcion_departamento);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/Usuario_Rol", ReplyAction="http://tempuri.org/IService1/Usuario_RolResponse")]
-        void Usuario_Rol(string Talento_Humano, string ID_rol);
+        void Usuario_Rol(string Talento_Humano, string descripcion_rol);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/Usuario_Rol", ReplyAction="http://tempuri.org/IService1/Usuario_RolResponse")]
-        System.Threading.Tasks.Task Usuario_RolAsync(string Talento_Humano, string ID_rol);
+        System.Threading.Tasks.Task Usuario_RolAsync(string Talento_Humano, string descripcion_rol);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/LogInUsuario2", ReplyAction="http://tempuri.org/IService1/LogInUsuario2Response")]
         GestionVacacionesUnitec.ServiceReference1.tbl_usuarios LogInUsuario2(string email, string password);
@@ -1834,6 +1834,12 @@ namespace GestionVacacionesUnitec.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ListaDeRoles", ReplyAction="http://tempuri.org/IService1/ListaDeRolesResponse")]
         System.Threading.Tasks.Task<GestionVacacionesUnitec.ServiceReference1.tbl_roles[]> ListaDeRolesAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ListaDeRolesPorUsuario", ReplyAction="http://tempuri.org/IService1/ListaDeRolesPorUsuarioResponse")]
+        GestionVacacionesUnitec.ServiceReference1.tbl_roles[] ListaDeRolesPorUsuario(string talento_humano);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ListaDeRolesPorUsuario", ReplyAction="http://tempuri.org/IService1/ListaDeRolesPorUsuarioResponse")]
+        System.Threading.Tasks.Task<GestionVacacionesUnitec.ServiceReference1.tbl_roles[]> ListaDeRolesPorUsuarioAsync(string talento_humano);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1919,28 +1925,28 @@ namespace GestionVacacionesUnitec.ServiceReference1 {
             return base.Channel.agregarRolAsync(ID, descripcion, activo);
         }
         
-        public void Rol_Usuario(string ID_rol, string ID_permiso) {
-            base.Channel.Rol_Usuario(ID_rol, ID_permiso);
+        public void Rol_Permiso(string ID_rol, string ID_permiso) {
+            base.Channel.Rol_Permiso(ID_rol, ID_permiso);
         }
         
-        public System.Threading.Tasks.Task Rol_UsuarioAsync(string ID_rol, string ID_permiso) {
-            return base.Channel.Rol_UsuarioAsync(ID_rol, ID_permiso);
+        public System.Threading.Tasks.Task Rol_PermisoAsync(string ID_rol, string ID_permiso) {
+            return base.Channel.Rol_PermisoAsync(ID_rol, ID_permiso);
         }
         
-        public void Usuario_Departamento(string Talento_Humano, string ID_departamento) {
-            base.Channel.Usuario_Departamento(Talento_Humano, ID_departamento);
+        public void Usuario_Departamento(string Talento_Humano, string descripcion_departamento) {
+            base.Channel.Usuario_Departamento(Talento_Humano, descripcion_departamento);
         }
         
-        public System.Threading.Tasks.Task Usuario_DepartamentoAsync(string Talento_Humano, string ID_departamento) {
-            return base.Channel.Usuario_DepartamentoAsync(Talento_Humano, ID_departamento);
+        public System.Threading.Tasks.Task Usuario_DepartamentoAsync(string Talento_Humano, string descripcion_departamento) {
+            return base.Channel.Usuario_DepartamentoAsync(Talento_Humano, descripcion_departamento);
         }
         
-        public void Usuario_Rol(string Talento_Humano, string ID_rol) {
-            base.Channel.Usuario_Rol(Talento_Humano, ID_rol);
+        public void Usuario_Rol(string Talento_Humano, string descripcion_rol) {
+            base.Channel.Usuario_Rol(Talento_Humano, descripcion_rol);
         }
         
-        public System.Threading.Tasks.Task Usuario_RolAsync(string Talento_Humano, string ID_rol) {
-            return base.Channel.Usuario_RolAsync(Talento_Humano, ID_rol);
+        public System.Threading.Tasks.Task Usuario_RolAsync(string Talento_Humano, string descripcion_rol) {
+            return base.Channel.Usuario_RolAsync(Talento_Humano, descripcion_rol);
         }
         
         public GestionVacacionesUnitec.ServiceReference1.tbl_usuarios LogInUsuario2(string email, string password) {
@@ -1965,6 +1971,14 @@ namespace GestionVacacionesUnitec.ServiceReference1 {
         
         public System.Threading.Tasks.Task<GestionVacacionesUnitec.ServiceReference1.tbl_roles[]> ListaDeRolesAsync() {
             return base.Channel.ListaDeRolesAsync();
+        }
+        
+        public GestionVacacionesUnitec.ServiceReference1.tbl_roles[] ListaDeRolesPorUsuario(string talento_humano) {
+            return base.Channel.ListaDeRolesPorUsuario(talento_humano);
+        }
+        
+        public System.Threading.Tasks.Task<GestionVacacionesUnitec.ServiceReference1.tbl_roles[]> ListaDeRolesPorUsuarioAsync(string talento_humano) {
+            return base.Channel.ListaDeRolesPorUsuarioAsync(talento_humano);
         }
     }
 }

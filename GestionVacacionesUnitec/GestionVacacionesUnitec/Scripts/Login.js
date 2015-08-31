@@ -29,7 +29,7 @@
             console.log("Response status: " + response.status);
             console.log("Next url : " + response.url);
             if (response.status == 1)
-                window.location.href = 'Home/Index';
+                window.location.href = response.url;
             else if (response.status == 0)
                 $emailInput.css("color", "red");
             //window.location.href = 'www.google.com';

@@ -1,0 +1,96 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Gestion de Vacaciones UNITEC</title>
+    <link href="~/Content/style.css" rel="stylesheet" />
+    <link href="~/Content/stylesmenu.css" rel="stylesheet" />
+    <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="script.js"></script>
+
+    <script type="text/javascript" src="~/Content/js/modernizr-1.5.min.js"></script>
+</head>
+
+<body>
+    <div id="main">
+        <header>
+            <div id="logo">
+                <div id="logo_text">
+
+                    <img src="~/Content/images/logounitecpeque.jpg">
+                </div>
+
+            </div>
+            <nav>
+                <div id='cssmenu'>
+                    <ul>
+                        <li><a href='http://localhost:1755/Home/Index'><span>Inicio</span></a></li>
+                        <li><a href='#'><span>Solicitudes</span></a></li>
+                        <li> <a href='calendar.html'><span>Calendario</span></a> </li>
+                        <li><a href='http://localhost:1755/Form/ViewCrearUsuario'><span>Crear Usuario</span></a></li>
+                        <li><a href='http://localhost:1755/Form/ViewCrearDepartamento'><span>Crear Departamento</span></a></li>
+                        <li><a href='http://localhost:1755/Form/ViewCrearRol'><span>Crear Rol</span></a></li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+
+    </div>
+    <div id="site_content">
+        <div id="site_creacion">
+            <h2 style="text-align : center">Crear Usuario</h2>
+            <form>
+                <h4>Talento humano : <input placeholder='talento_humano' type='talento_humano' id="talentoHumano"></h4>
+                <h4>Email : <input placeholder='email' type='email' id="email"></h4>
+                <h4>Password : <input placeholder='password' type='password' id="password"></h4>
+                <h4>Primer nombre : <input placeholder='primer_nombre' type='primer_nombre' id="firstName"></h4>
+                <h4>Segundo nombre : <input placeholder='segundo_nombre' type='segundo_nombre' id="middleName"></h4>
+                <h4>Primer apellido  : <input placeholder='primer_apellido' type='primer_apellido' id="lastName"></h4>
+                <h4>Segundo apellido : <input placeholder='segundo_apellido' type='segundo_apellido' id="secondLastName"></h4>
+                <h4>Fecha de ingreso : <input placeholder='fecha_ingreso' type='fecha_ingreso' id="employmentDate"></h4>
+                <h4>Fecha de Creacion  : <input placeholder='fecha_creacion' type='fecha_creacion' id="signUpDate"></h4>
+                <h4> Activo / Inactivo  : <input type="checkbox" value='activo' id="active"></h4>
+
+                    ______________________________________________________________________________________________________________________________________
+
+                <h2 style ="text-align : center">Departamento</h2style>
+                    
+                    <h4>IT : <input class="department" type="checkbox" name="1" value="it" /></h4>  
+                    <h4>Recursos Humanos : <input class="department" type="checkbox" name="2" value="it" /></h4>               
+                    ______________________________________________________________________________________________________________________________________
+
+                    <h2 style ="text-align : center">Roles</h2style>
+                    <h4>Administrador : <input class="role" type="checkbox" name="2" value="admi" /> </h4>
+                    <h4>Catedratico : <input class="role" type="checkbox" name="1" value="admi" /> </h4>
+                        ______________________________________________________________________________________________________________________________________<br />    
+                        <button class='animated pulse' id="submitUser" style="width: 100%">Crear</button>
+</form>
+        </div>
+    </div>
+
+
+    <footer><img src="~/Content/images/footer.jpg"></footer>
+    </div>
+    <p>&nbsp;</p>
+    <!-- javascript en la parte de abajo para que cargue mas rapido -->
+    <script type="text/javascript" src="~/Content/js/jquery.js"></script>
+    <script type="text/javascript" src="~/Content/js/jquery.easing-sooper.js"></script>
+    <script type="text/javascript" src="~/Content/js/jquery.sooperfish.js"></script>
+    <script type="text/javascript" src="~/Content/js/image_fade.js"></script>
+    <script src="~/Scripts/CreateUserForm.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+      $('ul.sf-menu').sooperfish();
+    });
+    </script>
+</body>
+</html>

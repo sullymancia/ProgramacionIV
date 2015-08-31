@@ -31,6 +31,7 @@ namespace GestionVacacionesUnitec.Controllers
             return View("CrearRol");
         }
 
+        [HttpPost]
         public RedirectToRouteResult crearUser(string talentoH, string correo, string password, string nombre1, string nombre2, string apellido1, string apellido2, string fechaIngreso, string fechaCreacion, string activo)
         {
             Service1Client test = new Service1Client();
@@ -44,6 +45,8 @@ namespace GestionVacacionesUnitec.Controllers
             test.Close();
             return RedirectToAction("Index","Home");
         }
+
+        [HttpPost]
         public RedirectToRouteResult crearDepartamento(string ID, string descripcion, string activo)
         {
             Service1Client test = new Service1Client();
@@ -58,6 +61,7 @@ namespace GestionVacacionesUnitec.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        [HttpPost]
         public RedirectToRouteResult crearRol(string ID, string descripcion, string activo)
         {
             Service1Client test = new Service1Client();
@@ -76,7 +80,7 @@ namespace GestionVacacionesUnitec.Controllers
         {
             Service1Client test = new Service1Client();
             List<tbl_departamento> departamentos = test.ListaDeDepartamentos().ToList();
-
+            test.Close();
             return Json(new
             {
                 /*name = currentUser.Primer_Nombre,
@@ -90,13 +94,53 @@ namespace GestionVacacionesUnitec.Controllers
         {
             Service1Client test = new Service1Client();
             List<tbl_roles> roles = test.ListaDeRoles().ToList();
-
+            test.Close();
             return Json(new
             {
                 /*name = currentUser.Primer_Nombre,
                 lastName = currentUser.Primer_Apellido,
                 email = currentUser.Email*/
             });
+        }
+
+        [HttpPost]
+        public ActionResult getSession()
+        {
+            Usuario currentUser = Session["Secion2"] as Usuario;
+
+            return Json(new
+            {
+                name = currentUser.Primer_Nombre,
+                lastName = currentUser.Primer_Apellido,
+                email = currentUser.Email,
+                talentoHumano = currentUser.Talento_Humano
+            });
+        }
+
+
+        [HttpPost]
+        public void Usuario_Rol(string Talento_Humano, string descripcion_rol)
+        {
+            Service1Client test = new Service1Client();
+            List<string> miLista = descripcion_rol.Split('~').ToList();
+
+            for (int x = 0; x < miLista.Count; x++)
+                test.Usuario_Rol(Talento_Humano, miLista.ElementAt(x));
+
+            test.Close();
+
+        }
+
+        [HttpPost]
+        public void Usuario_Departamento(string Talento_Humano, string descripcion_departamento)
+        {
+            Service1Client test = new Service1Client();
+            List<string> miLista = descripcion_departamento.Split('~').ToList();
+            for (int x = 0; x < miLista.Count; x++)
+            {
+                test.Usuario_Departamento(Talento_Humano, miLista.ElementAt(x));
+            }
+            test.Close();
         }
     }
 }

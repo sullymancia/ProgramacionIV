@@ -199,7 +199,8 @@ nav {
   width: 430px;
   overflow: hidden;
   margin: 1px auto;
-  background: transparent url(../images/transparent.png) repeat;
+  border: 5px dotted black;
+  background: transparent url(~/Content/images/transparent.png) repeat;
   color: #292929;
 }
 #site_content { 
@@ -543,3 +544,20 @@ ul#images li {
   width: 155px;
   height: 300px;
 }
+
+#welcome {
+    text-align: center;
+    color: black;
+    font-weight :500;
+    font-size: 22px;
+    line-height: 100%;
+}
+
+ center {
+     display: block;
+}
+
+ form {
+     margin-left : 20px;
+     margin-bottom: 20px;
+ }
