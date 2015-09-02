@@ -181,15 +181,26 @@ namespace WcfServiceLibrary_sjb
             return query;
         }
 
-        public List<tbl_roles> ListaDeRolesPorUsuario(string talento_humano)
+        public tbl_roles ListaDeRolesPorUsuario(string talento_humano)
         {
             vsystem_sjbEntities ent = new vsystem_sjbEntities();
             int numero = Int32.Parse(talento_humano);
+            List<string> miListaDeIDs = new List<string>();
             var query = (from u in ent.tbl_usuarios
                          where u.talento_humano == numero
                          select u).FirstOrDefault();
             tbl_usuarios user = query;
-            return user.tbl_roles.ToList();
+            List<tbl_roles> miListaDeRoles = user.tbl_roles.ToList();
+            int numeroDeRoles = miListaDeRoles.Count();
+
+            //int penesote = miListaDeRoles.ElementAt(0).rolesid();
+
+            tbl_roles[] miArregloDeRoles = new tbl_roles[numeroDeRoles];
+            for(int x=0; x<numeroDeRoles; x++)
+            {
+                miArregloDeRoles[x] = miListaDeRoles.ElementAt(x);
+            }
+            return miArregloDeRoles[0];
         }
     }
 }

@@ -51,7 +51,7 @@ namespace WcfServiceLibrary_sjb
         List<tbl_roles> ListaDeRoles();
 
         [OperationContract]
-        List<tbl_roles> ListaDeRolesPorUsuario(string talento_humano);
+        tbl_roles ListaDeRolesPorUsuario(string talento_humano);
 
         // TODO: Add your service operations here
     }

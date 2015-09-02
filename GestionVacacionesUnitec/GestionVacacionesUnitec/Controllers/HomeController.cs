@@ -34,7 +34,7 @@ namespace GestionVacacionesUnitec.Controllers
         public ActionResult getRolesPorUsuario(string talento_humano)
         {
             Service1Client test = new Service1Client();
-            //tbl_roles[] _roles = test.ListaDeRolesPorUsuario(talento_humano);
+            //tbl_roles _roles = test.ListaDeRolesPorUsuario(talento_humano);
             test.Close();
             int numero;
 

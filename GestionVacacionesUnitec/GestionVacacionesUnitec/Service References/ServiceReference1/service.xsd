@@ -196,7 +196,7 @@
   <xs:element name="ListaDeRolesPorUsuarioResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/WcfServiceLibrary_sjb" minOccurs="0" name="ListaDeRolesPorUsuarioResult" nillable="true" type="q7:ArrayOftbl_roles" />
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/WcfServiceLibrary_sjb" minOccurs="0" name="ListaDeRolesPorUsuarioResult" nillable="true" type="q7:tbl_roles" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

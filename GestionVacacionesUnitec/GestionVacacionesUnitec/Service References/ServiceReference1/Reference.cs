@@ -1836,10 +1836,10 @@ namespace GestionVacacionesUnitec.ServiceReference1 {
         System.Threading.Tasks.Task<GestionVacacionesUnitec.ServiceReference1.tbl_roles[]> ListaDeRolesAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ListaDeRolesPorUsuario", ReplyAction="http://tempuri.org/IService1/ListaDeRolesPorUsuarioResponse")]
-        GestionVacacionesUnitec.ServiceReference1.tbl_roles[] ListaDeRolesPorUsuario(string talento_humano);
+        GestionVacacionesUnitec.ServiceReference1.tbl_roles ListaDeRolesPorUsuario(string talento_humano);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ListaDeRolesPorUsuario", ReplyAction="http://tempuri.org/IService1/ListaDeRolesPorUsuarioResponse")]
-        System.Threading.Tasks.Task<GestionVacacionesUnitec.ServiceReference1.tbl_roles[]> ListaDeRolesPorUsuarioAsync(string talento_humano);
+        System.Threading.Tasks.Task<GestionVacacionesUnitec.ServiceReference1.tbl_roles> ListaDeRolesPorUsuarioAsync(string talento_humano);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1973,11 +1973,11 @@ namespace GestionVacacionesUnitec.ServiceReference1 {
             return base.Channel.ListaDeRolesAsync();
         }
         
-        public GestionVacacionesUnitec.ServiceReference1.tbl_roles[] ListaDeRolesPorUsuario(string talento_humano) {
+        public GestionVacacionesUnitec.ServiceReference1.tbl_roles ListaDeRolesPorUsuario(string talento_humano) {
             return base.Channel.ListaDeRolesPorUsuario(talento_humano);
         }
         
-        public System.Threading.Tasks.Task<GestionVacacionesUnitec.ServiceReference1.tbl_roles[]> ListaDeRolesPorUsuarioAsync(string talento_humano) {
+        public System.Threading.Tasks.Task<GestionVacacionesUnitec.ServiceReference1.tbl_roles> ListaDeRolesPorUsuarioAsync(string talento_humano) {
             return base.Channel.ListaDeRolesPorUsuarioAsync(talento_humano);
         }
     }
