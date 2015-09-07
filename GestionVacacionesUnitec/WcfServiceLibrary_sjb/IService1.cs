@@ -51,7 +51,7 @@ namespace WcfServiceLibrary_sjb
         List<tbl_roles> ListaDeRoles();
 
         [OperationContract]
-        tbl_roles ListaDeRolesPorUsuario(string talento_humano);
+        tbl_roles[] ListaDeRolesPorUsuario(string talento_humano);
 
         // TODO: Add your service operations here
     }
@@ -91,6 +91,8 @@ namespace WcfServiceLibrary_sjb
         public System.DateTime fecha_ingreso { get; set; }
         public System.DateTime fecha_creacion { get; set; }
         public bool activo { get; set; }
+        public List<tbl_roles> listaDeRoles { get; set; }
+        public List<tbl_permisos> listaDePermisos { get; set; }
 
 
         [DataMember]
@@ -149,10 +151,25 @@ namespace WcfServiceLibrary_sjb
             set { fecha_creacion = value; }
         }
 
+        [DataMember]
         public bool Activo
         {
             get { return activo; }
             set { activo = value; }
+        }
+
+        [DataMember]
+        public List<tbl_roles> ListaDeRoles
+        {
+            get { return listaDeRoles; }
+            set { listaDeRoles = value;}
+        }
+
+        [DataMember]
+        public List<tbl_permisos> ListaDePermisos
+        {
+            get { return listaDePermisos; }
+            set { listaDePermisos = value; }
         }
     }
 }

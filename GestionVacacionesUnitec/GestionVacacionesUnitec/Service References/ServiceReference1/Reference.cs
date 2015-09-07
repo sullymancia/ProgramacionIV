@@ -84,6 +84,9 @@ namespace GestionVacacionesUnitec.ServiceReference1 {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool ActivoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string EmailField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -91,6 +94,12 @@ namespace GestionVacacionesUnitec.ServiceReference1 {
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private System.DateTime Fecha_IngresoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private GestionVacacionesUnitec.ServiceReference1.tbl_permisos[] ListaDePermisosField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private GestionVacacionesUnitec.ServiceReference1.tbl_roles[] ListaDeRolesField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private string Primer_ApellidoField;
@@ -114,6 +123,19 @@ namespace GestionVacacionesUnitec.ServiceReference1 {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool Activo {
+            get {
+                return this.ActivoField;
+            }
+            set {
+                if ((this.ActivoField.Equals(value) != true)) {
+                    this.ActivoField = value;
+                    this.RaisePropertyChanged("Activo");
+                }
             }
         }
         
@@ -152,6 +174,32 @@ namespace GestionVacacionesUnitec.ServiceReference1 {
                 if ((this.Fecha_IngresoField.Equals(value) != true)) {
                     this.Fecha_IngresoField = value;
                     this.RaisePropertyChanged("Fecha_Ingreso");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public GestionVacacionesUnitec.ServiceReference1.tbl_permisos[] ListaDePermisos {
+            get {
+                return this.ListaDePermisosField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ListaDePermisosField, value) != true)) {
+                    this.ListaDePermisosField = value;
+                    this.RaisePropertyChanged("ListaDePermisos");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public GestionVacacionesUnitec.ServiceReference1.tbl_roles[] ListaDeRoles {
+            get {
+                return this.ListaDeRolesField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ListaDeRolesField, value) != true)) {
+                    this.ListaDeRolesField = value;
+                    this.RaisePropertyChanged("ListaDeRoles");
                 }
             }
         }
@@ -217,6 +265,208 @@ namespace GestionVacacionesUnitec.ServiceReference1 {
                 if ((this.Talento_HumanoField.Equals(value) != true)) {
                     this.Talento_HumanoField = value;
                     this.RaisePropertyChanged("Talento_Humano");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="tbl_permisos", Namespace="http://schemas.datacontract.org/2004/07/WcfServiceLibrary_sjb")]
+    [System.SerializableAttribute()]
+    public partial class tbl_permisos : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool activoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string descripcionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int permisosidField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private GestionVacacionesUnitec.ServiceReference1.tbl_roles[] tbl_rolesField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool activo {
+            get {
+                return this.activoField;
+            }
+            set {
+                if ((this.activoField.Equals(value) != true)) {
+                    this.activoField = value;
+                    this.RaisePropertyChanged("activo");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string descripcion {
+            get {
+                return this.descripcionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.descripcionField, value) != true)) {
+                    this.descripcionField = value;
+                    this.RaisePropertyChanged("descripcion");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int permisosid {
+            get {
+                return this.permisosidField;
+            }
+            set {
+                if ((this.permisosidField.Equals(value) != true)) {
+                    this.permisosidField = value;
+                    this.RaisePropertyChanged("permisosid");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public GestionVacacionesUnitec.ServiceReference1.tbl_roles[] tbl_roles {
+            get {
+                return this.tbl_rolesField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.tbl_rolesField, value) != true)) {
+                    this.tbl_rolesField = value;
+                    this.RaisePropertyChanged("tbl_roles");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="tbl_roles", Namespace="http://schemas.datacontract.org/2004/07/WcfServiceLibrary_sjb")]
+    [System.SerializableAttribute()]
+    public partial class tbl_roles : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private bool activoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string descripcionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int rolesidField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private GestionVacacionesUnitec.ServiceReference1.tbl_permisos[] tbl_permisosField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private GestionVacacionesUnitec.ServiceReference1.tbl_usuarios[] tbl_usuariosField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public bool activo {
+            get {
+                return this.activoField;
+            }
+            set {
+                if ((this.activoField.Equals(value) != true)) {
+                    this.activoField = value;
+                    this.RaisePropertyChanged("activo");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string descripcion {
+            get {
+                return this.descripcionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.descripcionField, value) != true)) {
+                    this.descripcionField = value;
+                    this.RaisePropertyChanged("descripcion");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int rolesid {
+            get {
+                return this.rolesidField;
+            }
+            set {
+                if ((this.rolesidField.Equals(value) != true)) {
+                    this.rolesidField = value;
+                    this.RaisePropertyChanged("rolesid");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public GestionVacacionesUnitec.ServiceReference1.tbl_permisos[] tbl_permisos {
+            get {
+                return this.tbl_permisosField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.tbl_permisosField, value) != true)) {
+                    this.tbl_permisosField = value;
+                    this.RaisePropertyChanged("tbl_permisos");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public GestionVacacionesUnitec.ServiceReference1.tbl_usuarios[] tbl_usuarios {
+            get {
+                return this.tbl_usuariosField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.tbl_usuariosField, value) != true)) {
+                    this.tbl_usuariosField = value;
+                    this.RaisePropertyChanged("tbl_usuarios");
                 }
             }
         }
@@ -1130,115 +1380,6 @@ namespace GestionVacacionesUnitec.ServiceReference1 {
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="tbl_roles", Namespace="http://schemas.datacontract.org/2004/07/WcfServiceLibrary_sjb")]
-    [System.SerializableAttribute()]
-    public partial class tbl_roles : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool activoField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string descripcionField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int rolesidField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private GestionVacacionesUnitec.ServiceReference1.tbl_permisos[] tbl_permisosField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private GestionVacacionesUnitec.ServiceReference1.tbl_usuarios[] tbl_usuariosField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool activo {
-            get {
-                return this.activoField;
-            }
-            set {
-                if ((this.activoField.Equals(value) != true)) {
-                    this.activoField = value;
-                    this.RaisePropertyChanged("activo");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string descripcion {
-            get {
-                return this.descripcionField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.descripcionField, value) != true)) {
-                    this.descripcionField = value;
-                    this.RaisePropertyChanged("descripcion");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int rolesid {
-            get {
-                return this.rolesidField;
-            }
-            set {
-                if ((this.rolesidField.Equals(value) != true)) {
-                    this.rolesidField = value;
-                    this.RaisePropertyChanged("rolesid");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public GestionVacacionesUnitec.ServiceReference1.tbl_permisos[] tbl_permisos {
-            get {
-                return this.tbl_permisosField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.tbl_permisosField, value) != true)) {
-                    this.tbl_permisosField = value;
-                    this.RaisePropertyChanged("tbl_permisos");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public GestionVacacionesUnitec.ServiceReference1.tbl_usuarios[] tbl_usuarios {
-            get {
-                return this.tbl_usuariosField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.tbl_usuariosField, value) != true)) {
-                    this.tbl_usuariosField = value;
-                    this.RaisePropertyChanged("tbl_usuarios");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
     [System.Runtime.Serialization.DataContractAttribute(Name="tbl_vacaciones", Namespace="http://schemas.datacontract.org/2004/07/WcfServiceLibrary_sjb")]
     [System.SerializableAttribute()]
     public partial class tbl_vacaciones : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
@@ -1660,99 +1801,6 @@ namespace GestionVacacionesUnitec.ServiceReference1 {
         }
     }
     
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
-    [System.Runtime.Serialization.DataContractAttribute(Name="tbl_permisos", Namespace="http://schemas.datacontract.org/2004/07/WcfServiceLibrary_sjb")]
-    [System.SerializableAttribute()]
-    public partial class tbl_permisos : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
-        
-        [System.NonSerializedAttribute()]
-        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private bool activoField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private string descripcionField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int permisosidField;
-        
-        [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private GestionVacacionesUnitec.ServiceReference1.tbl_roles[] tbl_rolesField;
-        
-        [global::System.ComponentModel.BrowsableAttribute(false)]
-        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
-            get {
-                return this.extensionDataField;
-            }
-            set {
-                this.extensionDataField = value;
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public bool activo {
-            get {
-                return this.activoField;
-            }
-            set {
-                if ((this.activoField.Equals(value) != true)) {
-                    this.activoField = value;
-                    this.RaisePropertyChanged("activo");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public string descripcion {
-            get {
-                return this.descripcionField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.descripcionField, value) != true)) {
-                    this.descripcionField = value;
-                    this.RaisePropertyChanged("descripcion");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public int permisosid {
-            get {
-                return this.permisosidField;
-            }
-            set {
-                if ((this.permisosidField.Equals(value) != true)) {
-                    this.permisosidField = value;
-                    this.RaisePropertyChanged("permisosid");
-                }
-            }
-        }
-        
-        [System.Runtime.Serialization.DataMemberAttribute()]
-        public GestionVacacionesUnitec.ServiceReference1.tbl_roles[] tbl_roles {
-            get {
-                return this.tbl_rolesField;
-            }
-            set {
-                if ((object.ReferenceEquals(this.tbl_rolesField, value) != true)) {
-                    this.tbl_rolesField = value;
-                    this.RaisePropertyChanged("tbl_roles");
-                }
-            }
-        }
-        
-        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
-        
-        protected void RaisePropertyChanged(string propertyName) {
-            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
-            if ((propertyChanged != null)) {
-                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
-            }
-        }
-    }
-    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="ServiceReference1.IService1")]
     public interface IService1 {
@@ -1836,10 +1884,10 @@ namespace GestionVacacionesUnitec.ServiceReference1 {
         System.Threading.Tasks.Task<GestionVacacionesUnitec.ServiceReference1.tbl_roles[]> ListaDeRolesAsync();
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ListaDeRolesPorUsuario", ReplyAction="http://tempuri.org/IService1/ListaDeRolesPorUsuarioResponse")]
-        GestionVacacionesUnitec.ServiceReference1.tbl_roles ListaDeRolesPorUsuario(string talento_humano);
+        GestionVacacionesUnitec.ServiceReference1.tbl_roles[] ListaDeRolesPorUsuario(string talento_humano);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ListaDeRolesPorUsuario", ReplyAction="http://tempuri.org/IService1/ListaDeRolesPorUsuarioResponse")]
-        System.Threading.Tasks.Task<GestionVacacionesUnitec.ServiceReference1.tbl_roles> ListaDeRolesPorUsuarioAsync(string talento_humano);
+        System.Threading.Tasks.Task<GestionVacacionesUnitec.ServiceReference1.tbl_roles[]> ListaDeRolesPorUsuarioAsync(string talento_humano);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -1973,11 +2021,11 @@ namespace GestionVacacionesUnitec.ServiceReference1 {
             return base.Channel.ListaDeRolesAsync();
         }
         
-        public GestionVacacionesUnitec.ServiceReference1.tbl_roles ListaDeRolesPorUsuario(string talento_humano) {
+        public GestionVacacionesUnitec.ServiceReference1.tbl_roles[] ListaDeRolesPorUsuario(string talento_humano) {
             return base.Channel.ListaDeRolesPorUsuario(talento_humano);
         }
         
-        public System.Threading.Tasks.Task<GestionVacacionesUnitec.ServiceReference1.tbl_roles> ListaDeRolesPorUsuarioAsync(string talento_humano) {
+        public System.Threading.Tasks.Task<GestionVacacionesUnitec.ServiceReference1.tbl_roles[]> ListaDeRolesPorUsuarioAsync(string talento_humano) {
             return base.Channel.ListaDeRolesPorUsuarioAsync(talento_humano);
         }
     }

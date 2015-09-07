@@ -9,9 +9,12 @@
   <xs:element name="CompositeType" nillable="true" type="tns:CompositeType" />
   <xs:complexType name="Usuario">
     <xs:sequence>
+      <xs:element minOccurs="0" name="Activo" type="xs:boolean" />
       <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Fecha_Creacion" type="xs:dateTime" />
       <xs:element minOccurs="0" name="Fecha_Ingreso" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="ListaDePermisos" nillable="true" type="tns:ArrayOftbl_permisos" />
+      <xs:element minOccurs="0" name="ListaDeRoles" nillable="true" type="tns:ArrayOftbl_roles" />
       <xs:element minOccurs="0" name="Primer_Apellido" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Primer_Nombre" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Segundo_Apellido" nillable="true" type="xs:string" />
@@ -20,6 +23,43 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Usuario" nillable="true" type="tns:Usuario" />
+  <xs:complexType name="ArrayOftbl_permisos">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="tbl_permisos" nillable="true" type="tns:tbl_permisos" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOftbl_permisos" nillable="true" type="tns:ArrayOftbl_permisos" />
+  <xs:complexType name="tbl_permisos">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="activo" type="xs:boolean" />
+      <xs:element minOccurs="0" name="descripcion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="permisosid" type="xs:int" />
+      <xs:element minOccurs="0" name="tbl_roles" nillable="true" type="tns:ArrayOftbl_roles" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="tbl_permisos" nillable="true" type="tns:tbl_permisos" />
+  <xs:complexType name="ArrayOftbl_roles">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="tbl_roles" nillable="true" type="tns:tbl_roles" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOftbl_roles" nillable="true" type="tns:ArrayOftbl_roles" />
+  <xs:complexType name="tbl_roles">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="activo" type="xs:boolean" />
+      <xs:element minOccurs="0" name="descripcion" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="rolesid" type="xs:int" />
+      <xs:element minOccurs="0" name="tbl_permisos" nillable="true" type="tns:ArrayOftbl_permisos" />
+      <xs:element minOccurs="0" name="tbl_usuarios" nillable="true" type="tns:ArrayOftbl_usuarios" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="tbl_roles" nillable="true" type="tns:tbl_roles" />
+  <xs:complexType name="ArrayOftbl_usuarios">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="tbl_usuarios" nillable="true" type="tns:tbl_usuarios" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOftbl_usuarios" nillable="true" type="tns:ArrayOftbl_usuarios" />
   <xs:complexType name="tbl_usuarios">
     <xs:sequence>
       <xs:element minOccurs="0" name="activo" type="xs:boolean" />
@@ -103,12 +143,6 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="tbl_jerarquia" nillable="true" type="tns:tbl_jerarquia" />
-  <xs:complexType name="ArrayOftbl_usuarios">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="tbl_usuarios" nillable="true" type="tns:tbl_usuarios" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOftbl_usuarios" nillable="true" type="tns:ArrayOftbl_usuarios" />
   <xs:complexType name="ArrayOftbl_log_vacaciones">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="tbl_log_vacaciones" nillable="true" type="tns:tbl_log_vacaciones" />
@@ -164,35 +198,4 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="tbl_vacaciones" nillable="true" type="tns:tbl_vacaciones" />
-  <xs:complexType name="ArrayOftbl_roles">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="tbl_roles" nillable="true" type="tns:tbl_roles" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOftbl_roles" nillable="true" type="tns:ArrayOftbl_roles" />
-  <xs:complexType name="tbl_roles">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="activo" type="xs:boolean" />
-      <xs:element minOccurs="0" name="descripcion" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="rolesid" type="xs:int" />
-      <xs:element minOccurs="0" name="tbl_permisos" nillable="true" type="tns:ArrayOftbl_permisos" />
-      <xs:element minOccurs="0" name="tbl_usuarios" nillable="true" type="tns:ArrayOftbl_usuarios" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="tbl_roles" nillable="true" type="tns:tbl_roles" />
-  <xs:complexType name="ArrayOftbl_permisos">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="tbl_permisos" nillable="true" type="tns:tbl_permisos" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOftbl_permisos" nillable="true" type="tns:ArrayOftbl_permisos" />
-  <xs:complexType name="tbl_permisos">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="activo" type="xs:boolean" />
-      <xs:element minOccurs="0" name="descripcion" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="permisosid" type="xs:int" />
-      <xs:element minOccurs="0" name="tbl_roles" nillable="true" type="tns:ArrayOftbl_roles" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="tbl_permisos" nillable="true" type="tns:tbl_permisos" />
 </xs:schema>

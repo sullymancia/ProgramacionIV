@@ -58,6 +58,38 @@ namespace WcfServiceLibrary_sjb
 
             if(query == null)
                 return null;
+            tbl_usuarios user2 = query;
+            List<tbl_roles> miListitaDeRoles = new List<tbl_roles>();
+            List<tbl_permisos> miListitaDePermisos = new List<tbl_permisos>();
+
+            for(int x = 0; x<user2.tbl_roles.ToList<tbl_roles>().Count; x++)
+            {
+                tbl_roles miRol = new tbl_roles();
+                miRol.descripcion = user2.tbl_roles.ToList<tbl_roles>().ElementAt(x).descripcion;
+                miRol.activo = user2.tbl_roles.ToList<tbl_roles>().ElementAt(x).activo;
+                miRol.rolesid = user2.tbl_roles.ToList<tbl_roles>().ElementAt(x).rolesid;
+                miListitaDeRoles.Add(miRol);
+            }
+
+            for (int x = 0; x < miListitaDeRoles.Count; x++)
+            {
+
+                tbl_roles miRolActual = user2.tbl_roles.ToList<tbl_roles>().ElementAt(x);
+                int numeroDePermisos = miRolActual.tbl_permisos.ToList<tbl_permisos>().Count;
+
+                for (int y = 0; y < numeroDePermisos; y++)
+                {
+                    tbl_permisos miPermiso = new tbl_permisos();
+                    miPermiso.activo = miRolActual.tbl_permisos.ToList<tbl_permisos>().ElementAt(y).activo;
+                    miPermiso.descripcion = miRolActual.tbl_permisos.ToList<tbl_permisos>().ElementAt(y).descripcion;
+                    miPermiso.permisosid = miRolActual.tbl_permisos.ToList<tbl_permisos>().ElementAt(y).permisosid;
+                    //miPermiso.activo = miListitaDeRoles.ElementAt(x).tbl_permisos.ToList<tbl_permisos>().ElementAt(y).activo;
+                    //miPermiso.descripcion = miListitaDeRoles.ElementAt(x).tbl_permisos.ToList<tbl_permisos>().ElementAt(y).descripcion;
+                    //miPermiso.permisosid = miListitaDeRoles.ElementAt(x).tbl_permisos.ToList<tbl_permisos>().ElementAt(y).permisosid;
+                    if(!miListitaDePermisos.Contains(miPermiso))
+                        miListitaDePermisos.Add(miPermiso);
+                }
+            }
 
             Usuario user = new Usuario()
             {
@@ -69,7 +101,9 @@ namespace WcfServiceLibrary_sjb
                 primer_nombre = query.primer_nombre,
                 segundo_apellido = query.segundo_apellido,
                 segundo_nombre = query.segundo_apellido,
-                talento_humano = query.talento_humano
+                talento_humano = query.talento_humano,
+                listaDeRoles = miListitaDeRoles,
+                listaDePermisos = miListitaDePermisos
             };
 
             //newUsuario = query;
@@ -144,6 +178,9 @@ namespace WcfServiceLibrary_sjb
         {
             vsystem_sjbEntities ent = new vsystem_sjbEntities();
 
+            string _email = email;
+            string _password = password;
+
             var query = (from u in ent.tbl_usuarios
                          where u.email == email && u.password == password
                          select u).FirstOrDefault();
@@ -181,7 +218,7 @@ namespace WcfServiceLibrary_sjb
             return query;
         }
 
-        public tbl_roles ListaDeRolesPorUsuario(string talento_humano)
+        public tbl_roles[] ListaDeRolesPorUsuario(string talento_humano)
         {
             vsystem_sjbEntities ent = new vsystem_sjbEntities();
             int numero = Int32.Parse(talento_humano);
@@ -200,7 +237,7 @@ namespace WcfServiceLibrary_sjb
             {
                 miArregloDeRoles[x] = miListaDeRoles.ElementAt(x);
             }
-            return miArregloDeRoles[0];
+            return miArregloDeRoles;
         }
     }
 }

@@ -16,6 +16,18 @@
     var $departmentCheckBoxes = $(".department");
     var currentSessionId;
 
+    console.log("Datepicker checkpoint");
+    console.log($signUpDateInput);
+    console.log($employmentDateInput);
+
+    $signUpDateInput.datepicker();
+
+    $employmentDateInput.datepicker({
+        format: 'dd/mm/yyyy',
+    }).on('changeDate', function (e) {
+        $(this).datepicker('hide');
+    });
+
     console.log("Role checkboxes : " + $roleCheckBoxes.size());
     console.log("Department checkboxes : " + $departmentCheckBoxes.size());
 
@@ -31,6 +43,8 @@
 
     });
     
+
+
     //on submit form clicked
     $submitUserButton.click( function (e) {
         e.preventDefault();
