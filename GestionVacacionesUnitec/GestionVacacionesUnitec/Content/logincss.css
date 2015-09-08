@@ -9,7 +9,7 @@ body::before {
   height: 100%;
 }
 body {
-   background-image: url(\Content\images\background-photo.jpg);
+   background-image: url(~\Content\images\background-photo.jpg);
    background-color: black; 
   -webkit-background-size: cover;
   -moz-background-size: cover;

@@ -75,18 +75,23 @@ namespace GestionVacacionesUnitec.Controllers
             test.Close();
             return RedirectToAction("Index", "Home");
         }
-        [HttpGet]
+        [HttpPost]
         public ActionResult getDepartamentos()
         {
             Service1Client test = new Service1Client();
             List<tbl_departamento> departamentos = test.ListaDeDepartamentos().ToList();
             test.Close();
-            return Json(new
+            string misDepartamentos = "";
+            for (int x = 0; x < departamentos.Count; x++)
             {
-                /*name = currentUser.Primer_Nombre,
-                lastName = currentUser.Primer_Apellido,
-                email = currentUser.Email*/
-            });
+                if (departamentos.ElementAt(x).activo == true)
+                    misDepartamentos += (x > 0) ?
+                        "~" + departamentos.ElementAt(x).descripcion : departamentos.ElementAt(x).descripcion;               
+            }
+                return Json(new
+                {
+                    serializedData = misDepartamentos
+                });
         }
 
         [HttpGet]
@@ -95,6 +100,12 @@ namespace GestionVacacionesUnitec.Controllers
             Service1Client test = new Service1Client();
             List<tbl_roles> roles = test.ListaDeRoles().ToList();
             test.Close();
+            string misRoles = "";
+            for (int x = 0; x < roles.Count; x++)
+            {
+                if (roles.ElementAt(x).activo == true)
+                    misRoles = misRoles + "~" + roles.ElementAt(0).descripcion;
+            }
             return Json(new
             {
                 /*name = currentUser.Primer_Nombre,

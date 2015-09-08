@@ -1,47 +1,52 @@
 ﻿$(document).ready(function () {
 
-    console.log("Create user form script");
-    var $talentoHumanoInput   = $("#talentoHumano");
-    var $emailInput           = $("#email");
-    var $passwordInput        = $("#password");
-    var $firstNameInput       = $("#firstName");
-    var $middleNameInput      = $("#middleName");
-    var $lasNameInput         = $("#lastName");
-    var $secondLastNameInput  = $("#secondLastName");
-    var $signUpDateInput      = $("#signUpDate");
-    var $employmentDateInput  = $("#employmentDate");
-    var $activeInput          = $("#active");
-    var $submitUserButton     = $("#submitUser");
-    var $roleCheckBoxes       = $(".role");
-    var $departmentCheckBoxes = $(".department");
+    var $talentoHumanoInput      = $("#talentoHumano");
+    var $emailInput              = $("#email");
+    var $passwordInput           = $("#password");
+    var $firstNameInput          = $("#firstName");
+    var $middleNameInput         = $("#middleName");
+    var $lasNameInput            = $("#lastName");
+    var $secondLastNameInput     = $("#secondLastName");
+    var $signUpDateInput         = $("#signUpDate");
+    var $employmentDateInput     = $("#employmentDate");
+    var $activeInput             = $("#active");
+    var $submitUserButton        = $("#submitUser");
+    var $roleCheckBoxes          = $(".role");
+    var $departmentCheckBoxes    = $(".department");
+    var serializedDepartmentList = "";
+    var departments              = [];
     var currentSessionId;
 
     console.log("Datepicker checkpoint");
     console.log($signUpDateInput);
     console.log($employmentDateInput);
 
-    $signUpDateInput.datepicker();
+  /*  $signUpDateInput.datepicker();
 
     $employmentDateInput.datepicker({
         format: 'dd/mm/yyyy',
     }).on('changeDate', function (e) {
         $(this).datepicker('hide');
-    });
-
-    console.log("Role checkboxes : " + $roleCheckBoxes.size());
-    console.log("Department checkboxes : " + $departmentCheckBoxes.size());
-
-    
+    });*/
 
     //Retrieve session
-    var url = 'http://localhost:1755/Form/getSession';
+    /*var url = 'http://localhost:1755/Form/getSession';
     var ajaxRequestForSession = $.post(url, function (session) {
 
         console.log("Session name : " + session.name);
         console.log("Session ID : " + session.talentoHumano);
         currentSessionId = session.talentoHumano;
 
+    });*/
+
+    //Retrieve active departments
+    var url = 'http://localhost:1755/Form/getDepartamentos';
+    var ajaxRequestForSession = $.post(url, function (data) {
+        serializedDepartmentList = data.serializedData;
+        departments = serializedDepartmentList.split('~');
+        console.log("departments array : " + departments);
     });
+
     
 
 

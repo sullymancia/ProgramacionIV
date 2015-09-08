@@ -83,9 +83,6 @@ namespace WcfServiceLibrary_sjb
                     miPermiso.activo = miRolActual.tbl_permisos.ToList<tbl_permisos>().ElementAt(y).activo;
                     miPermiso.descripcion = miRolActual.tbl_permisos.ToList<tbl_permisos>().ElementAt(y).descripcion;
                     miPermiso.permisosid = miRolActual.tbl_permisos.ToList<tbl_permisos>().ElementAt(y).permisosid;
-                    //miPermiso.activo = miListitaDeRoles.ElementAt(x).tbl_permisos.ToList<tbl_permisos>().ElementAt(y).activo;
-                    //miPermiso.descripcion = miListitaDeRoles.ElementAt(x).tbl_permisos.ToList<tbl_permisos>().ElementAt(y).descripcion;
-                    //miPermiso.permisosid = miListitaDeRoles.ElementAt(x).tbl_permisos.ToList<tbl_permisos>().ElementAt(y).permisosid;
                     if(!miListitaDePermisos.Contains(miPermiso))
                         miListitaDePermisos.Add(miPermiso);
                 }
@@ -207,7 +204,16 @@ namespace WcfServiceLibrary_sjb
             vsystem_sjbEntities ent = new vsystem_sjbEntities();
             var query = (from u in ent.tbl_departamento
                          select u).ToList();
-            return query;
+            List<tbl_departamento> miListaDeDepartamentos = new List<tbl_departamento>();
+            for (int y = 0; y < query.Count; y++)
+            {
+                tbl_departamento miDepartamento = new tbl_departamento();
+                miDepartamento.activo = query.ElementAt(y).activo;
+                miDepartamento.descripcion = query.ElementAt(y).descripcion;
+                miDepartamento.departamentoid = query.ElementAt(y).departamentoid;
+                miListaDeDepartamentos.Add(miDepartamento);
+            }
+            return miListaDeDepartamentos;
         }
 
         public List<tbl_roles> ListaDeRoles()
@@ -215,7 +221,16 @@ namespace WcfServiceLibrary_sjb
             vsystem_sjbEntities ent = new vsystem_sjbEntities();
             var query = (from u in ent.tbl_roles
                          select u).ToList();
-            return query;
+            List<tbl_roles> miListaDeRoles = new List<tbl_roles>();
+            for (int y = 0; y < query.Count; y++)
+            {
+                tbl_roles miRol = new tbl_roles();
+                miRol.activo = query.ElementAt(y).activo;
+                miRol.descripcion = query.ElementAt(y).descripcion;
+                miRol.rolesid = query.ElementAt(y).rolesid;
+                miListaDeRoles.Add(miRol);
+            }
+            return miListaDeRoles;
         }
 
         public tbl_roles[] ListaDeRolesPorUsuario(string talento_humano)
