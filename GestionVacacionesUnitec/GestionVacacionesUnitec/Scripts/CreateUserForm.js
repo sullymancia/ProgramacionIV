@@ -13,13 +13,13 @@
     var $submitUserButton        = $("#submitUser");
     var $roleCheckBoxes          = $(".role");
     var $departmentCheckBoxes    = $(".department");
+    var $departmentList          = $("#departmentList");
     var serializedDepartmentList = "";
     var departments              = [];
     var currentSessionId;
 
-    console.log("Datepicker checkpoint");
-    console.log($signUpDateInput);
-    console.log($employmentDateInput);
+    
+    console.log($departmentList.html());
 
   /*  $signUpDateInput.datepicker();
 
@@ -45,6 +45,26 @@
         serializedDepartmentList = data.serializedData;
         departments = serializedDepartmentList.split('~');
         console.log("departments array : " + departments);
+
+        for (var c = 0; c < departments.length; c++)
+        {   
+            $listItem = $('<li>');
+            $label = $('<label>',   {
+                for:    departments[c],
+                html : departments[c]
+            });
+
+            $checkbox = $('<input>', {
+                class : 'department',
+                type  : 'checkbox',
+                name: departments[c],
+                value : departments[c]
+            });
+
+            $listItem.append($label);
+            $listItem.append($checkbox);
+            $departmentList.append($listItem);
+        }         
     });
 
     
