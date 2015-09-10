@@ -94,7 +94,7 @@ namespace GestionVacacionesUnitec.Controllers
                 });
         }
 
-        [HttpGet]
+        [HttpPost]
         public ActionResult getRoles()
         {
             Service1Client test = new Service1Client();
@@ -104,13 +104,12 @@ namespace GestionVacacionesUnitec.Controllers
             for (int x = 0; x < roles.Count; x++)
             {
                 if (roles.ElementAt(x).activo == true)
-                    misRoles = misRoles + "~" + roles.ElementAt(0).descripcion;
+                    misRoles += (x > 0) ?
+                        "~" + roles.ElementAt(x).descripcion : roles.ElementAt(x).descripcion;        
             }
             return Json(new
             {
-                /*name = currentUser.Primer_Nombre,
-                lastName = currentUser.Primer_Apellido,
-                email = currentUser.Email*/
+                serializedData = misRoles
             });
         }
 

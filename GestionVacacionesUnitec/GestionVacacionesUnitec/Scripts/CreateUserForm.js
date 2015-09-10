@@ -14,8 +14,11 @@
     var $roleCheckBoxes          = $(".role");
     var $departmentCheckBoxes    = $(".department");
     var $departmentList          = $("#departmentList");
+    var $roleList                = $("#roleList");
+    var roleArray                = [];
+    var departmentAray           = [];
     var serializedDepartmentList = "";
-    var departments              = [];
+    var serializedRoleList       = "";
     var currentSessionId;
 
     
@@ -41,24 +44,24 @@
 
     //Retrieve active departments
     var url = 'http://localhost:1755/Form/getDepartamentos';
-    var ajaxRequestForSession = $.post(url, function (data) {
+    var ajaxRequestForDepartments = $.post(url, function (data) {
         serializedDepartmentList = data.serializedData;
-        departments = serializedDepartmentList.split('~');
-        console.log("departments array : " + departments);
+        departmentAray = serializedDepartmentList.split('~');
+        console.log("departments array : " + departmentAray);
 
-        for (var c = 0; c < departments.length; c++)
+        for (var c = 0; c < departmentAray.length; c++)
         {   
             $listItem = $('<li>');
             $label = $('<label>',   {
-                for:    departments[c],
-                html : departments[c]
+                for: departmentAray[c],
+                html: departmentAray[c]
             });
 
             $checkbox = $('<input>', {
                 class : 'department',
                 type  : 'checkbox',
-                name: departments[c],
-                value : departments[c]
+                name: departmentAray[c],
+                value: departmentAray[c]
             });
 
             $listItem.append($label);
@@ -67,7 +70,35 @@
         }         
     });
 
-    
+
+        //Retrieve active departments
+    var url = 'http://localhost:1755/Form/getRoles';
+    var ajaxRequestForRoles = $.post(url, function (data) {
+        console.log('Serialized data :  ' + data);
+        serializedRoleList = data.serializedData;
+        roleArray = serializedRoleList.split('~');
+        console.log("Roles array : " + roleArray);
+
+        for (var c = 0; c < roleArray.length; c++)
+        {   
+            $listItem = $('<li>');
+            $label = $('<label>',   {
+                for: roleArray[c],
+                html: roleArray[c]
+            });
+
+            $checkbox = $('<input>', {
+                class : 'role',
+                type  : 'checkbox',
+                name: roleArray[c],
+                value: roleArray[c]
+            });
+
+            $listItem.append($label);
+            $listItem.append($checkbox);
+            $roleList.append($listItem);
+        }         
+    });
 
 
     //on submit form clicked
