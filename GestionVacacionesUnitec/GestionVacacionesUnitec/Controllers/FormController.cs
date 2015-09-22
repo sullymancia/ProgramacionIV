@@ -18,6 +18,7 @@ namespace GestionVacacionesUnitec.Controllers
 
         public ActionResult ViewCrearUsuario()
         {
+
             return View("CrearUsuario");
         }
 
@@ -32,18 +33,16 @@ namespace GestionVacacionesUnitec.Controllers
         }
 
         [HttpPost]
-        public RedirectToRouteResult crearUser(string talentoH, string correo, string password, string nombre1, string nombre2, string apellido1, string apellido2, string fechaIngreso, string fechaCreacion, string activo)
+        public ActionResult crearUser(string talentoH, string correo, string password, string nombre1,
+                                      string nombre2, string apellido1, string apellido2, string fechaIngreso, 
+                                      string fechaCreacion)
         {
             Service1Client test = new Service1Client();
             bool estaActivo;
-            int numero = Int32.Parse(activo);
-            if (numero == 0)
-                estaActivo = false;
-            else
-                estaActivo = true;
+            estaActivo = true;
             test.agregarUsuario(talentoH, correo, password, nombre1, nombre2, apellido1, apellido2, fechaIngreso, fechaCreacion, estaActivo);
             test.Close();
-            return RedirectToAction("Index","Home");
+            return null;
         }
 
         [HttpPost]

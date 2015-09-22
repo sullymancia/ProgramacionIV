@@ -200,4 +200,23 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="agregarVacaciones">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="talento_humano" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="year" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="fecha_entrada" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="fecha_salida" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="dias_solicitados" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="fecha_solicitud" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="fecha_aprobacion" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="estatusID" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="agregarVacacionesResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
 </xs:schema>

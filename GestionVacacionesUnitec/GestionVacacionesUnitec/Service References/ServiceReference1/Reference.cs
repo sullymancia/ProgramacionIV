@@ -1888,6 +1888,12 @@ namespace GestionVacacionesUnitec.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ListaDeRolesPorUsuario", ReplyAction="http://tempuri.org/IService1/ListaDeRolesPorUsuarioResponse")]
         System.Threading.Tasks.Task<GestionVacacionesUnitec.ServiceReference1.tbl_roles[]> ListaDeRolesPorUsuarioAsync(string talento_humano);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/agregarVacaciones", ReplyAction="http://tempuri.org/IService1/agregarVacacionesResponse")]
+        void agregarVacaciones(string talento_humano, string year, string fecha_entrada, string fecha_salida, string dias_solicitados, string fecha_solicitud, string fecha_aprobacion, string estatusID);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/agregarVacaciones", ReplyAction="http://tempuri.org/IService1/agregarVacacionesResponse")]
+        System.Threading.Tasks.Task agregarVacacionesAsync(string talento_humano, string year, string fecha_entrada, string fecha_salida, string dias_solicitados, string fecha_solicitud, string fecha_aprobacion, string estatusID);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -2027,6 +2033,14 @@ namespace GestionVacacionesUnitec.ServiceReference1 {
         
         public System.Threading.Tasks.Task<GestionVacacionesUnitec.ServiceReference1.tbl_roles[]> ListaDeRolesPorUsuarioAsync(string talento_humano) {
             return base.Channel.ListaDeRolesPorUsuarioAsync(talento_humano);
+        }
+        
+        public void agregarVacaciones(string talento_humano, string year, string fecha_entrada, string fecha_salida, string dias_solicitados, string fecha_solicitud, string fecha_aprobacion, string estatusID) {
+            base.Channel.agregarVacaciones(talento_humano, year, fecha_entrada, fecha_salida, dias_solicitados, fecha_solicitud, fecha_aprobacion, estatusID);
+        }
+        
+        public System.Threading.Tasks.Task agregarVacacionesAsync(string talento_humano, string year, string fecha_entrada, string fecha_salida, string dias_solicitados, string fecha_solicitud, string fecha_aprobacion, string estatusID) {
+            return base.Channel.agregarVacacionesAsync(talento_humano, year, fecha_entrada, fecha_salida, dias_solicitados, fecha_solicitud, fecha_aprobacion, estatusID);
         }
     }
 }

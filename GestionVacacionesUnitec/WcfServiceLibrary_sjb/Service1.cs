@@ -41,7 +41,7 @@ namespace WcfServiceLibrary_sjb
             newUsuario.segundo_apellido = apellido2;
             newUsuario.fecha_ingreso = Convert.ToDateTime(fechaIngreso);
             newUsuario.fecha_creacion = Convert.ToDateTime(fechaCreacion);
-            newUsuario.activo = activo;
+            //newUsuario.activo = activo;
 
             ent.tbl_usuarios.Add(newUsuario);
             ent.SaveChanges();
@@ -112,9 +112,9 @@ namespace WcfServiceLibrary_sjb
         {
             vsystem_sjbEntities ent = new vsystem_sjbEntities();
             tbl_departamento newDepartamento = new tbl_departamento();
-            newDepartamento.departamentoid = Int32.Parse(ID);
+            //newDepartamento.departamentoid = Int32.Parse(ID);
             newDepartamento.descripcion = descripcion;
-            newDepartamento.activo = activo;
+            //newDepartamento.activo = activo;
 
             ent.tbl_departamento.Add(newDepartamento);
             ent.SaveChanges();
@@ -124,9 +124,9 @@ namespace WcfServiceLibrary_sjb
         {
             vsystem_sjbEntities ent = new vsystem_sjbEntities();
             tbl_roles newRol = new tbl_roles();
-            newRol.rolesid = Int32.Parse(ID);
+            //newRol.rolesid = Int32.Parse(ID);
             newRol.descripcion = descripcion;
-            newRol.activo = activo;
+            //newRol.activo = activo;
 
             ent.tbl_roles.Add(newRol);
             ent.SaveChanges();
@@ -144,9 +144,9 @@ namespace WcfServiceLibrary_sjb
             var query = (from u in ent.tbl_usuarios
                          where u.talento_humano == _Talento_Humano
                          select u).FirstOrDefault();
-            int _descripcion_departamento = Int32.Parse(descripcion_departamento);
+            
             var query2 = (from u in ent.tbl_departamento
-                          where u.departamentoid == _descripcion_departamento
+                          where u.descripcion == descripcion_departamento
                           select u).FirstOrDefault();
             tbl_usuarios user = query;
             tbl_departamento departamento = query2;
@@ -161,9 +161,9 @@ namespace WcfServiceLibrary_sjb
             var query = (from u in ent.tbl_usuarios
                          where u.talento_humano == _talentoHumano
                          select u).FirstOrDefault();
-            int _descripcion_rol = Int32.Parse(descripcion_rol);
+            
             var query2 = (from u in ent.tbl_roles
-                          where u.rolesid == _descripcion_rol
+                          where u.descripcion == descripcion_rol
                          select u).FirstOrDefault();
             tbl_usuarios user = query;
             tbl_roles rol = query2;
@@ -253,6 +253,24 @@ namespace WcfServiceLibrary_sjb
                 miArregloDeRoles[x] = miListaDeRoles.ElementAt(x);
             }
             return miArregloDeRoles;
+        }
+
+        public void agregarVacaciones(string talento_humano, string year, string fecha_entrada, string fecha_salida, string dias_solicitados, string fecha_solicitud, string fecha_aprobacion, string estatusID)
+        {
+            vsystem_sjbEntities ent = new vsystem_sjbEntities();
+            tbl_vacaciones newVacaciones = new tbl_vacaciones();
+
+            newVacaciones.talento_humano = Int32.Parse(talento_humano);
+            newVacaciones.year = Int32.Parse(year);
+            newVacaciones.fecha_entrada = Convert.ToDateTime(fecha_entrada);
+            newVacaciones.fecha_salida = Convert.ToDateTime(fecha_salida);
+            newVacaciones.dias_solicitados = Int32.Parse(dias_solicitados);
+            newVacaciones.fecha_solicitud = Int32.Parse(fecha_solicitud);
+            newVacaciones.fecha_de_aprobacion = Convert.ToDateTime(fecha_aprobacion);
+            newVacaciones.estatusid = Int32.Parse(estatusID);
+
+            ent.tbl_vacaciones.Add(newVacaciones);
+            ent.SaveChanges();
         }
     }
 }

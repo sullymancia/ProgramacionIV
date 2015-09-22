@@ -7,9 +7,7 @@
     var $middleNameInput         = $("#middleName");
     var $lasNameInput            = $("#lastName");
     var $secondLastNameInput     = $("#secondLastName");
-    var $signUpDateInput         = $("#signUpDate");
     var $employmentDateInput     = $("#employmentDate");
-    var $activeInput             = $("#active");
     var $submitUserButton        = $("#submitUser");
     var $roleCheckBoxes          = $(".role");
     var $departmentCheckBoxes    = $(".department");
@@ -20,7 +18,13 @@
     var serializedDepartmentList = "";
     var serializedRoleList       = "";
     var currentSessionId;
+    //interval
 
+    var today = new Date();
+    var month = today.getUTCMonth() + 1; //months from 1-12
+    var day = today.getUTCDate();
+    var year = today.getUTCFullYear();
+    var signUpDate = month + '/' + day + '/' + year;
     
     console.log($departmentList.html());
 
@@ -42,7 +46,11 @@
 
     });*/
 
-    //Retrieve active departments
+
+
+
+
+    //Fetch active departments
     var url = 'http://localhost:1755/Form/getDepartamentos';
     var ajaxRequestForDepartments = $.post(url, function (data) {
         serializedDepartmentList = data.serializedData;
@@ -67,11 +75,13 @@
             $listItem.append($label);
             $listItem.append($checkbox);
             $departmentList.append($listItem);
-        }         
+        }
+
+        $departmentCheckBoxes = $(".department");
     });
 
 
-        //Retrieve active departments
+        //Fetch active departments
     var url = 'http://localhost:1755/Form/getRoles';
     var ajaxRequestForRoles = $.post(url, function (data) {
         console.log('Serialized data :  ' + data);
@@ -97,14 +107,15 @@
             $listItem.append($label);
             $listItem.append($checkbox);
             $roleList.append($listItem);
-        }         
+        }
+        $roleCheckBoxes = $(".role");
     });
 
+    
 
     //on submit form clicked
     $submitUserButton.click( function (e) {
         e.preventDefault();
-        console.log("Current Session ID : " + currentSessionId);
 
         // Get values from first form
         var talentoHumano  = $talentoHumanoInput.val();
@@ -114,10 +125,11 @@
         var middleName     = $middleNameInput.val();
         var lastname       = $lasNameInput.val();
         var secondLastName = $secondLastNameInput.val();
-        var signUpDate     = $signUpDateInput.val();
-        var employmentDate = $employmentDateInput.val();
-        var active         = $activeInput.is(':checked') ? 1 : 0;
+        // Sign up date 
 
+        //Employment Date
+        var employmentDate = $employmentDateInput.val();
+        console.log('Testing employment date : ' + employmentDate);
 
         // Get values from second form
         var roles       = "";
@@ -148,8 +160,7 @@
             }
         });
 
-        console.log("--------------------------");
-
+            
            //posting User Creation Form
            var urlCreateUser = ' http://localhost:1755/Form/crearUser';
            var ajaxRequest = $.post(
@@ -163,8 +174,7 @@
                    apellido1: lastname,
                    apellido2: secondLastName,
                    fechaIngreso: employmentDate,
-                   fechaCreacion: signUpDate,
-                   activo: active
+                   fechaCreacion: signUpDate
                },
               function (data) {
                   console.log("Talento Humano : " + talentoHumano);
@@ -176,7 +186,6 @@
                   console.log("Second Last Name : " + secondLastName);
                   console.log("Creation Date : " + employmentDate);
                   console.log("Sign Up Date : " + signUpDate);
-                  console.log("Active User : " + active);    
        });
         
         

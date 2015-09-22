@@ -95,6 +95,8 @@
     <Content Include="Content\images\background-photo-mobile-devices.jpg" />
     <Content Include="Content\images\background-photo.jpg" />
     <Content Include="Content\images\bg.jpg" />
+    <Content Include="Content\images\bg_footer.png" />
+    <Content Include="Content\images\bg_footerlogos.png" />
     <Content Include="Content\images\day-bg-inactive.png" />
     <Content Include="Content\images\footer.jpg" />
     <Content Include="Content\images\LineaAzulRoja.jpg" />
@@ -112,7 +114,6 @@
     <Content Include="Content\js\modernizr-1.5.min.js" />
     <Content Include="Content\logincss.css" />
     <Content Include="Content\style.css" />
-    <Content Include="Content\stylesmenu.css" />
     <Content Include="Global.asax" />
     <Content Include="Content\fonts\DroidSans-webfont.eot" />
     <Content Include="Content\fonts\DroidSans-webfont.woff" />
@@ -121,6 +122,7 @@
     <Content Include="Content\fonts\NewsCycle-Regular.eot" />
     <Content Include="Content\fonts\NewsCycle-Regular.ttf" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\CrearSolicitud.js" />
     <Content Include="Scripts\CreateDepartmentForm.js" />
     <Content Include="Scripts\CreateRoleForm.js" />
     <Content Include="Scripts\CreateUserForm.js" />
@@ -162,6 +164,7 @@
     <Compile Include="Controllers\FormController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginTestController.cs" />
+    <Compile Include="Controllers\SolicitudesController.cs" />
     <Compile Include="Controllers\TestForServiceController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -195,6 +198,7 @@
     <Content Include="Views\Form\CrearUsuario.cshtml" />
     <Content Include="Views\Form\CrearDepartamento.cshtml" />
     <Content Include="Views\Form\CrearRol.cshtml" />
+    <Content Include="Views\Solicitudes\CrearSolicitud.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
