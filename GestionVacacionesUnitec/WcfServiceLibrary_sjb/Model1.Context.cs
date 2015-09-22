@@ -32,8 +32,8 @@ namespace WcfServiceLibrary_sjb
         public DbSet<tbl_log_vacaciones> tbl_log_vacaciones { get; set; }
         public DbSet<tbl_permisos> tbl_permisos { get; set; }
         public DbSet<tbl_roles> tbl_roles { get; set; }
-        public DbSet<tbl_tipo_dia> tbl_tipo_dia { get; set; }
         public DbSet<tbl_usuarios> tbl_usuarios { get; set; }
         public DbSet<tbl_vacaciones> tbl_vacaciones { get; set; }
+        public DbSet<tbl_tipo_dia> tbl_tipo_dia { get; set; }
     }
 }
