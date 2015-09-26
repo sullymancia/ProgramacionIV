@@ -4,6 +4,7 @@
     <Key>
       <PropertyRef Name="talento_humano_jefe" />
       <PropertyRef Name="talento_humano_empleado" />
+      <PropertyRef Name="fecha" />
     </Key>
     <Property Name="talento_humano_jefe" Type="int" Nullable="false" />
     <Property Name="talento_humano_empleado" Type="int" Nullable="false" />
@@ -78,7 +79,7 @@
       <PropertyRef Name="tipo_dia_id" />
     </Key>
     <Property Name="tipo_dia_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="descripcion" Type="int" Nullable="false" />
+    <Property Name="descripcion" Type="varchar" MaxLength="45" Nullable="false" />
   </EntityType>
   <EntityType Name="tbl_usuarios">
     <Key>
@@ -121,7 +122,7 @@
     <Property Name="fecha_salida" Type="date" Nullable="false" />
     <Property Name="fecha_entrada" Type="date" Nullable="false" />
     <Property Name="dias_solicitados" Type="int" Nullable="false" />
-    <Property Name="fecha_solicitud" Type="int" Nullable="false" />
+    <Property Name="fecha_solicitud" Type="date" Nullable="false" />
     <Property Name="fecha_de_aprobacion" Type="date" Nullable="false" />
     <Property Name="estatusid" Type="int" Nullable="false" />
   </EntityType>

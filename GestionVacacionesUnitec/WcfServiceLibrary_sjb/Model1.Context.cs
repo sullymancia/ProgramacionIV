@@ -25,7 +25,6 @@ namespace WcfServiceLibrary_sjb
             throw new UnintentionalCodeFirstException();
         }
     
-        public DbSet<tbl_calendario> tbl_calendario { get; set; }
         public DbSet<tbl_departamento> tbl_departamento { get; set; }
         public DbSet<tbl_estatus> tbl_estatus { get; set; }
         public DbSet<tbl_jerarquia> tbl_jerarquia { get; set; }
@@ -35,5 +34,6 @@ namespace WcfServiceLibrary_sjb
         public DbSet<tbl_usuarios> tbl_usuarios { get; set; }
         public DbSet<tbl_vacaciones> tbl_vacaciones { get; set; }
         public DbSet<tbl_tipo_dia> tbl_tipo_dia { get; set; }
+        public DbSet<tbl_calendario> tbl_calendario { get; set; }
     }
 }

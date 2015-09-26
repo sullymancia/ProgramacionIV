@@ -13,8 +13,16 @@
     var $departmentCheckBoxes    = $(".department");
     var $departmentList          = $("#departmentList");
     var $roleList                = $("#roleList");
+    var $bossList                = $("#bossList");
+    var $lists;
     var roleArray                = [];
-    var departmentAray           = [];
+    var departmentAray = [];
+    
+    var userPosted                   = false;
+    var roleRelationshipPosted       = false;
+    var departmentRelationshipPosted = false;
+    var fetching                     = false;
+
     var serializedDepartmentList = "";
     var serializedRoleList       = "";
     var currentSessionId;
@@ -46,9 +54,11 @@
 
     });*/
 
-
-
-
+  /*  console.log('Testing lists');
+    setInterval(function () {
+        console.log('Lists : ' + $lists.length);
+    }, 1000);
+    */
 
     //Fetch active departments
     var url = 'http://localhost:1755/Form/getDepartamentos';
@@ -78,6 +88,8 @@
         }
 
         $departmentCheckBoxes = $(".department");
+        setChangeListener($departmentCheckBoxes);
+        $lists = $('.department');
     });
 
 
@@ -109,6 +121,8 @@
             $roleList.append($listItem);
         }
         $roleCheckBoxes = $(".role");
+       // setChangeListener($roleCheckBoxes);
+  
     });
 
     
@@ -160,7 +174,7 @@
             }
         });
 
-            
+        $('#submitUser').css('background-color', 'yellow');
            //posting User Creation Form
            var urlCreateUser = ' http://localhost:1755/Form/crearUser';
            var ajaxRequest = $.post(
@@ -177,6 +191,8 @@
                    fechaCreacion: signUpDate
                },
               function (data) {
+                  $('#submitUser').css('background-color', 'green');
+                  console.log('--------------------------');
                   console.log("Talento Humano : " + talentoHumano);
                   console.log("Email : " + email);
                   console.log("Password : " + password);
@@ -186,6 +202,7 @@
                   console.log("Second Last Name : " + secondLastName);
                   console.log("Creation Date : " + employmentDate);
                   console.log("Sign Up Date : " + signUpDate);
+                  console.log(data);
        });
         
         
@@ -218,8 +235,58 @@
 });
 
 
+var setChangeListener = function (checkboxes) {
 
+    checkboxes.each(function (index) {
+        $thisCheckBox = $(this);
+        console.log('val : ' + $thisCheckBox.val());
+        $thisCheckBox.change(function () {
+            fetching = true;
+            $('#submitUser').css('visibility', 'hidden');
+            var value = $(this).val();
+            if ($(this).is(':checked')) {
+                console.log('click event');
+                //fetching possible bosses
+                var urlgetJefesPosibles = 'http://localhost:1755/Form/getJefesPosibles';
+                var ajaxRequestBosses = $.post(
+                urlgetJefesPosibles,
+                {
+                    departamento_descripcion: value
+                },
+                function (data) {
+                    console.log('data requested : ' + data.serializedData);
+                    fetching = false;
+                    $('#submitUser').css('visibility', 'visible');
 
+                    /////////////////////////////////////////////// requesting bosses
+                    console.log('Serialized data :  ' + data);
+                    serializedRoleList = data.serializedData;
+                    bossArray = serializedRoleList.split('~');
+                    console.log("Boss array : " + bossArray);
 
-                  
-   
+                    for (var c = 0; c < bossArray.length; c++) {
+                        var $listItem = $('<li>');
+                        var $label = $('<label>', {
+                            for: bossArray[c],
+                            html: bossArray[c]
+                        });
+
+                        $checkbox = $('<input>', {
+                            class: 'boss',
+                            type: 'checkbox',
+                            name: bossArray[c],
+                            value: bossArray[c]
+                        });
+
+                        $listItem.append($label);
+                        $listItem.append($checkbox);
+                        $('#bossList').append($listItem);
+                    }
+                    /////////////////////////////////////////////// done requesting bosses
+                });
+            }
+
+        });
+    });
+}
+

@@ -5,6 +5,7 @@
       <xsd:import namespace="http://tempuri.org/" />
       <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import namespace="http://schemas.datacontract.org/2004/07/WcfServiceLibrary_sjb" />
+      <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IService1_GetData_InputMessage">
@@ -97,6 +98,18 @@
   <wsdl:message name="IService1_agregarVacaciones_OutputMessage">
     <wsdl:part name="parameters" element="tns:agregarVacacionesResponse" />
   </wsdl:message>
+  <wsdl:message name="IService1_agregarJerarquia_InputMessage">
+    <wsdl:part name="parameters" element="tns:agregarJerarquia" />
+  </wsdl:message>
+  <wsdl:message name="IService1_agregarJerarquia_OutputMessage">
+    <wsdl:part name="parameters" element="tns:agregarJerarquiaResponse" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ListaDeJefesPosibles_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListaDeJefesPosibles" />
+  </wsdl:message>
+  <wsdl:message name="IService1_ListaDeJefesPosibles_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListaDeJefesPosiblesResponse" />
+  </wsdl:message>
   <wsdl:portType name="IService1">
     <wsdl:operation name="GetData">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/GetData" message="tns:IService1_GetData_InputMessage" />
@@ -157,6 +170,14 @@
     <wsdl:operation name="agregarVacaciones">
       <wsdl:input wsaw:Action="http://tempuri.org/IService1/agregarVacaciones" message="tns:IService1_agregarVacaciones_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IService1/agregarVacacionesResponse" message="tns:IService1_agregarVacaciones_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="agregarJerarquia">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/agregarJerarquia" message="tns:IService1_agregarJerarquia_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/agregarJerarquiaResponse" message="tns:IService1_agregarJerarquia_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListaDeJefesPosibles">
+      <wsdl:input wsaw:Action="http://tempuri.org/IService1/ListaDeJefesPosibles" message="tns:IService1_ListaDeJefesPosibles_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IService1/ListaDeJefesPosiblesResponse" message="tns:IService1_ListaDeJefesPosibles_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IService1" type="tns:IService1">
@@ -289,6 +310,24 @@
     </wsdl:operation>
     <wsdl:operation name="agregarVacaciones">
       <soap:operation soapAction="http://tempuri.org/IService1/agregarVacaciones" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="agregarJerarquia">
+      <soap:operation soapAction="http://tempuri.org/IService1/agregarJerarquia" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListaDeJefesPosibles">
+      <soap:operation soapAction="http://tempuri.org/IService1/ListaDeJefesPosibles" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

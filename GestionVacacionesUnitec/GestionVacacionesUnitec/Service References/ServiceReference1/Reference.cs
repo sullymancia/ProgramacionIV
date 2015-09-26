@@ -1403,7 +1403,7 @@ namespace GestionVacacionesUnitec.ServiceReference1 {
         private System.DateTime fecha_salidaField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int fecha_solicitudField;
+        private System.DateTime fecha_solicitudField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int talento_humanoField;
@@ -1499,7 +1499,7 @@ namespace GestionVacacionesUnitec.ServiceReference1 {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int fecha_solicitud {
+        public System.DateTime fecha_solicitud {
             get {
                 return this.fecha_solicitudField;
             }
@@ -1609,7 +1609,7 @@ namespace GestionVacacionesUnitec.ServiceReference1 {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int descripcionField;
+        private string descripcionField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private GestionVacacionesUnitec.ServiceReference1.tbl_calendario[] tbl_calendarioField;
@@ -1628,12 +1628,12 @@ namespace GestionVacacionesUnitec.ServiceReference1 {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int descripcion {
+        public string descripcion {
             get {
                 return this.descripcionField;
             }
             set {
-                if ((this.descripcionField.Equals(value) != true)) {
+                if ((object.ReferenceEquals(this.descripcionField, value) != true)) {
                     this.descripcionField = value;
                     this.RaisePropertyChanged("descripcion");
                 }
@@ -1890,10 +1890,22 @@ namespace GestionVacacionesUnitec.ServiceReference1 {
         System.Threading.Tasks.Task<GestionVacacionesUnitec.ServiceReference1.tbl_roles[]> ListaDeRolesPorUsuarioAsync(string talento_humano);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/agregarVacaciones", ReplyAction="http://tempuri.org/IService1/agregarVacacionesResponse")]
-        void agregarVacaciones(string talento_humano, string year, string fecha_entrada, string fecha_salida, string dias_solicitados, string fecha_solicitud, string fecha_aprobacion, string estatusID);
+        void agregarVacaciones(string talento_humano, string year, string fecha_entrada, string fecha_salida, string dias_solicitados, string fecha_solicitud, string fecha_aprobacion, string estatus);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/agregarVacaciones", ReplyAction="http://tempuri.org/IService1/agregarVacacionesResponse")]
-        System.Threading.Tasks.Task agregarVacacionesAsync(string talento_humano, string year, string fecha_entrada, string fecha_salida, string dias_solicitados, string fecha_solicitud, string fecha_aprobacion, string estatusID);
+        System.Threading.Tasks.Task agregarVacacionesAsync(string talento_humano, string year, string fecha_entrada, string fecha_salida, string dias_solicitados, string fecha_solicitud, string fecha_aprobacion, string estatus);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/agregarJerarquia", ReplyAction="http://tempuri.org/IService1/agregarJerarquiaResponse")]
+        void agregarJerarquia(string talento_humano, string jefe_talento_humano, string departamento_descripcion);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/agregarJerarquia", ReplyAction="http://tempuri.org/IService1/agregarJerarquiaResponse")]
+        System.Threading.Tasks.Task agregarJerarquiaAsync(string talento_humano, string jefe_talento_humano, string departamento_descripcion);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ListaDeJefesPosibles", ReplyAction="http://tempuri.org/IService1/ListaDeJefesPosiblesResponse")]
+        string[] ListaDeJefesPosibles(string departamento_descripcion, string talento_humano_actual);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IService1/ListaDeJefesPosibles", ReplyAction="http://tempuri.org/IService1/ListaDeJefesPosiblesResponse")]
+        System.Threading.Tasks.Task<string[]> ListaDeJefesPosiblesAsync(string departamento_descripcion, string talento_humano_actual);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -2035,12 +2047,28 @@ namespace GestionVacacionesUnitec.ServiceReference1 {
             return base.Channel.ListaDeRolesPorUsuarioAsync(talento_humano);
         }
         
-        public void agregarVacaciones(string talento_humano, string year, string fecha_entrada, string fecha_salida, string dias_solicitados, string fecha_solicitud, string fecha_aprobacion, string estatusID) {
-            base.Channel.agregarVacaciones(talento_humano, year, fecha_entrada, fecha_salida, dias_solicitados, fecha_solicitud, fecha_aprobacion, estatusID);
+        public void agregarVacaciones(string talento_humano, string year, string fecha_entrada, string fecha_salida, string dias_solicitados, string fecha_solicitud, string fecha_aprobacion, string estatus) {
+            base.Channel.agregarVacaciones(talento_humano, year, fecha_entrada, fecha_salida, dias_solicitados, fecha_solicitud, fecha_aprobacion, estatus);
         }
         
-        public System.Threading.Tasks.Task agregarVacacionesAsync(string talento_humano, string year, string fecha_entrada, string fecha_salida, string dias_solicitados, string fecha_solicitud, string fecha_aprobacion, string estatusID) {
-            return base.Channel.agregarVacacionesAsync(talento_humano, year, fecha_entrada, fecha_salida, dias_solicitados, fecha_solicitud, fecha_aprobacion, estatusID);
+        public System.Threading.Tasks.Task agregarVacacionesAsync(string talento_humano, string year, string fecha_entrada, string fecha_salida, string dias_solicitados, string fecha_solicitud, string fecha_aprobacion, string estatus) {
+            return base.Channel.agregarVacacionesAsync(talento_humano, year, fecha_entrada, fecha_salida, dias_solicitados, fecha_solicitud, fecha_aprobacion, estatus);
+        }
+        
+        public void agregarJerarquia(string talento_humano, string jefe_talento_humano, string departamento_descripcion) {
+            base.Channel.agregarJerarquia(talento_humano, jefe_talento_humano, departamento_descripcion);
+        }
+        
+        public System.Threading.Tasks.Task agregarJerarquiaAsync(string talento_humano, string jefe_talento_humano, string departamento_descripcion) {
+            return base.Channel.agregarJerarquiaAsync(talento_humano, jefe_talento_humano, departamento_descripcion);
+        }
+        
+        public string[] ListaDeJefesPosibles(string departamento_descripcion, string talento_humano_actual) {
+            return base.Channel.ListaDeJefesPosibles(departamento_descripcion, talento_humano_actual);
+        }
+        
+        public System.Threading.Tasks.Task<string[]> ListaDeJefesPosiblesAsync(string departamento_descripcion, string talento_humano_actual) {
+            return base.Channel.ListaDeJefesPosiblesAsync(departamento_descripcion, talento_humano_actual);
         }
     }
 }

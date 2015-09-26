@@ -103,7 +103,7 @@
   <xs:element name="tbl_calendario" nillable="true" type="tns:tbl_calendario" />
   <xs:complexType name="tbl_tipo_dia">
     <xs:sequence>
-      <xs:element minOccurs="0" name="descripcion" type="xs:int" />
+      <xs:element minOccurs="0" name="descripcion" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="tbl_calendario" nillable="true" type="tns:ArrayOftbl_calendario" />
       <xs:element minOccurs="0" name="tipo_dia_id" type="xs:int" />
     </xs:sequence>
@@ -188,7 +188,7 @@
       <xs:element minOccurs="0" name="fecha_de_aprobacion" type="xs:dateTime" />
       <xs:element minOccurs="0" name="fecha_entrada" type="xs:dateTime" />
       <xs:element minOccurs="0" name="fecha_salida" type="xs:dateTime" />
-      <xs:element minOccurs="0" name="fecha_solicitud" type="xs:int" />
+      <xs:element minOccurs="0" name="fecha_solicitud" type="xs:dateTime" />
       <xs:element minOccurs="0" name="talento_humano" type="xs:int" />
       <xs:element minOccurs="0" name="tbl_estatus" nillable="true" type="tns:tbl_estatus" />
       <xs:element minOccurs="0" name="tbl_log_vacaciones" nillable="true" type="tns:ArrayOftbl_log_vacaciones" />

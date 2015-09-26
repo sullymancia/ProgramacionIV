@@ -37,12 +37,23 @@ namespace GestionVacacionesUnitec.Controllers
                                       string nombre2, string apellido1, string apellido2, string fechaIngreso, 
                                       string fechaCreacion)
         {
-            Service1Client test = new Service1Client();
-            bool estaActivo;
-            estaActivo = true;
-            test.agregarUsuario(talentoH, correo, password, nombre1, nombre2, apellido1, apellido2, fechaIngreso, fechaCreacion, estaActivo);
-            test.Close();
-            return null;
+            try
+            {
+                Service1Client test = new Service1Client();
+                bool estaActivo;
+                estaActivo = true;
+                test.agregarUsuario(talentoH, correo, password, nombre1, nombre2, apellido1, apellido2, fechaIngreso, fechaCreacion, estaActivo);
+                test.Close();
+                return null;
+            }
+            catch(Exception e)
+            {
+                return Json(new
+                {
+                    serializedData = "error"
+                });
+            }
+           
         }
 
         [HttpPost]
@@ -150,6 +161,40 @@ namespace GestionVacacionesUnitec.Controllers
                 test.Usuario_Departamento(Talento_Humano, miLista.ElementAt(x));
             }
             test.Close();
+        }
+
+        [HttpPost]
+        public ActionResult getJefesPosibles(string departamento_descripcion)
+        {
+            Service1Client test = new Service1Client();
+            Usuario currentUser = Session["Secion2"] as Usuario;
+            String _talentoHumano = currentUser.Talento_Humano.ToString();
+            List<string> JefesPosibles = test.ListaDeJefesPosibles(departamento_descripcion, _talentoHumano).ToList();
+            test.Close();
+            //List<tbl_usuarios> JefesPosibles =test.ListaDeJefesPosibles(departamento_descripcion, _talentoHumano).toList();
+            test.Close();
+            string misJefes = "";
+            //int asd = JefesPosibles.Count;
+              for (int x = 0; x < JefesPosibles.Count; x++)
+            {
+                     misJefes += (x > 0) ?
+                         "~" + JefesPosibles.ElementAt(x): JefesPosibles.ElementAt(x);
+             }
+            return Json(new
+            {
+                serializedData = misJefes
+            });
+        }
+
+        [HttpPost]
+        public ActionResult agregarJerarquia( string jefe_talento_humano, string departamento_descripcion)
+        {
+            Service1Client test = new Service1Client();
+            Usuario currentUser = Session["Secion2"] as Usuario;
+            String _talentoHumano = currentUser.Talento_Humano.ToString();
+            test.agregarJerarquia(_talentoHumano, jefe_talento_humano, departamento_descripcion);
+            test.Close();
+            return null;
         }
     }
 }

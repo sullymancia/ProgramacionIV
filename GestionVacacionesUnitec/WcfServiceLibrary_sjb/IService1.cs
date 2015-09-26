@@ -54,7 +54,13 @@ namespace WcfServiceLibrary_sjb
         tbl_roles[] ListaDeRolesPorUsuario(string talento_humano);
 
         [OperationContract]
-        void agregarVacaciones(string talento_humano, string year, string fecha_entrada, string fecha_salida, string dias_solicitados, string fecha_solicitud, string fecha_aprobacion, string estatusID);
+        void agregarVacaciones(string talento_humano, string year, string fecha_entrada, string fecha_salida, string dias_solicitados, string fecha_solicitud, string fecha_aprobacion, string estatus);
+
+        [OperationContract]
+        void agregarJerarquia(string talento_humano, string jefe_talento_humano, string departamento_descripcion);
+
+        [OperationContract]
+        string[] ListaDeJefesPosibles(string departamento_descripcion, string talento_humano_actual);
 
         // TODO: Add your service operations here
     }

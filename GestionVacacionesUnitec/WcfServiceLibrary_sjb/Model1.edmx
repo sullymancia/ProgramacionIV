@@ -438,19 +438,6 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="vsystem_sjbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityType Name="tbl_calendario">
-          <Key>
-            <PropertyRef Name="talento_humano_jefe" />
-            <PropertyRef Name="talento_humano_empleado" />
-          </Key>
-          <Property Name="talento_humano_jefe" Type="Int32" Nullable="false" />
-          <Property Name="talento_humano_empleado" Type="Int32" Nullable="false" />
-          <Property Name="fecha" Type="DateTime" Nullable="false" />
-          <Property Name="tipo_dia_id" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="tbl_usuarios" Relationship="Self.fk_c_th_e" FromRole="tbl_calendario" ToRole="tbl_usuarios" />
-          <NavigationProperty Name="tbl_usuarios1" Relationship="Self.fk_c_th_j" FromRole="tbl_calendario" ToRole="tbl_usuarios" />
-          <NavigationProperty Name="tbl_tipo_dia" Relationship="vsystem_sjbModel.fk_c_td" FromRole="tbl_calendario" ToRole="tbl_tipo_dia" />
-        </EntityType>
         <EntityType Name="tbl_departamento">
           <Key>
             <PropertyRef Name="departamentoid" />
@@ -535,39 +522,15 @@
           <Property Name="fecha_creacion" Type="DateTime" Nullable="false" />
           <Property Name="password" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="activo" Type="Boolean" Nullable="false" />
-          <NavigationProperty Name="tbl_calendario" Relationship="Self.fk_c_th_e" FromRole="tbl_usuarios" ToRole="tbl_calendario" />
-          <NavigationProperty Name="tbl_calendario1" Relationship="Self.fk_c_th_j" FromRole="tbl_usuarios" ToRole="tbl_calendario" />
           <NavigationProperty Name="tbl_jerarquia" Relationship="Self.fk_j_th" FromRole="tbl_usuarios" ToRole="tbl_jerarquia" />
           <NavigationProperty Name="tbl_jerarquia1" Relationship="Self.fk_j_thj" FromRole="tbl_usuarios" ToRole="tbl_jerarquia" />
           <NavigationProperty Name="tbl_log_vacaciones" Relationship="Self.fk_lv_th" FromRole="tbl_usuarios" ToRole="tbl_log_vacaciones" />
           <NavigationProperty Name="tbl_departamento" Relationship="Self.tbl_usuarios_departamento" FromRole="tbl_usuarios" ToRole="tbl_departamento" />
           <NavigationProperty Name="tbl_roles" Relationship="Self.tbl_usuarios_roles" FromRole="tbl_usuarios" ToRole="tbl_roles" />
           <NavigationProperty Name="tbl_vacaciones" Relationship="vsystem_sjbModel.fk_v_th" FromRole="tbl_usuarios" ToRole="tbl_vacaciones" />
+          <NavigationProperty Name="tbl_calendario" Relationship="vsystem_sjbModel.fk_c_th_e" FromRole="tbl_usuarios" ToRole="tbl_calendario" />
+          <NavigationProperty Name="tbl_calendario1" Relationship="vsystem_sjbModel.fk_c_th_j" FromRole="tbl_usuarios" ToRole="tbl_calendario" />
         </EntityType>
-        <Association Name="fk_c_th_e">
-          <End Role="tbl_usuarios" Type="Self.tbl_usuarios" Multiplicity="1" />
-          <End Role="tbl_calendario" Type="Self.tbl_calendario" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbl_usuarios">
-              <PropertyRef Name="talento_humano" />
-            </Principal>
-            <Dependent Role="tbl_calendario">
-              <PropertyRef Name="talento_humano_empleado" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="fk_c_th_j">
-          <End Role="tbl_usuarios" Type="Self.tbl_usuarios" Multiplicity="1" />
-          <End Role="tbl_calendario" Type="Self.tbl_calendario" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="tbl_usuarios">
-              <PropertyRef Name="talento_humano" />
-            </Principal>
-            <Dependent Role="tbl_calendario">
-              <PropertyRef Name="talento_humano_jefe" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="fk_j_d">
           <End Role="tbl_departamento" Type="Self.tbl_departamento" Multiplicity="1" />
           <End Role="tbl_jerarquia" Type="Self.tbl_jerarquia" Multiplicity="*" />
@@ -653,7 +616,6 @@
           <End Role="tbl_usuarios" Type="Self.tbl_usuarios" Multiplicity="*" />
         </Association>
         <EntityContainer Name="vsystem_sjbEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="tbl_calendario" EntityType="Self.tbl_calendario" />
           <EntitySet Name="tbl_departamento" EntityType="Self.tbl_departamento" />
           <EntitySet Name="tbl_estatus" EntityType="Self.tbl_estatus" />
           <EntitySet Name="tbl_jerarquia" EntityType="Self.tbl_jerarquia" />
@@ -661,14 +623,6 @@
           <EntitySet Name="tbl_permisos" EntityType="Self.tbl_permisos" />
           <EntitySet Name="tbl_roles" EntityType="Self.tbl_roles" />
           <EntitySet Name="tbl_usuarios" EntityType="Self.tbl_usuarios" />
-          <AssociationSet Name="fk_c_th_e" Association="Self.fk_c_th_e">
-            <End Role="tbl_usuarios" EntitySet="tbl_usuarios" />
-            <End Role="tbl_calendario" EntitySet="tbl_calendario" />
-          </AssociationSet>
-          <AssociationSet Name="fk_c_th_j" Association="Self.fk_c_th_j">
-            <End Role="tbl_usuarios" EntitySet="tbl_usuarios" />
-            <End Role="tbl_calendario" EntitySet="tbl_calendario" />
-          </AssociationSet>
           <AssociationSet Name="fk_j_d" Association="Self.fk_j_d">
             <End Role="tbl_departamento" EntitySet="tbl_departamento" />
             <End Role="tbl_jerarquia" EntitySet="tbl_jerarquia" />
@@ -719,8 +673,17 @@
             <End Role="tbl_vacaciones" EntitySet="tbl_vacaciones" />
           </AssociationSet>
           <EntitySet Name="tbl_tipo_dia" EntityType="vsystem_sjbModel.tbl_tipo_dia" />
+          <EntitySet Name="tbl_calendario" EntityType="vsystem_sjbModel.tbl_calendario" />
           <AssociationSet Name="fk_c_td" Association="vsystem_sjbModel.fk_c_td">
             <End Role="tbl_tipo_dia" EntitySet="tbl_tipo_dia" />
+            <End Role="tbl_calendario" EntitySet="tbl_calendario" />
+          </AssociationSet>
+          <AssociationSet Name="fk_c_th_e" Association="vsystem_sjbModel.fk_c_th_e">
+            <End Role="tbl_usuarios" EntitySet="tbl_usuarios" />
+            <End Role="tbl_calendario" EntitySet="tbl_calendario" />
+          </AssociationSet>
+          <AssociationSet Name="fk_c_th_j" Association="vsystem_sjbModel.fk_c_th_j">
+            <End Role="tbl_usuarios" EntitySet="tbl_usuarios" />
             <End Role="tbl_calendario" EntitySet="tbl_calendario" />
           </AssociationSet>
         </EntityContainer>
@@ -785,6 +748,20 @@
           <Property Name="descripcion" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="tbl_calendario" Relationship="vsystem_sjbModel.fk_c_td" FromRole="tbl_tipo_dia" ToRole="tbl_calendario" />
         </EntityType>
+        <EntityType Name="tbl_calendario">
+          <Key>
+            <PropertyRef Name="talento_humano_jefe" />
+            <PropertyRef Name="talento_humano_empleado" />
+            <PropertyRef Name="fecha" />
+          </Key>
+          <Property Name="talento_humano_jefe" Type="Int32" Nullable="false" />
+          <Property Name="talento_humano_empleado" Type="Int32" Nullable="false" />
+          <Property Name="fecha" Type="DateTime" Nullable="false" />
+          <Property Name="tipo_dia_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="tbl_tipo_dia" Relationship="vsystem_sjbModel.fk_c_td" FromRole="tbl_calendario" ToRole="tbl_tipo_dia" />
+          <NavigationProperty Name="tbl_usuarios" Relationship="vsystem_sjbModel.fk_c_th_e" FromRole="tbl_calendario" ToRole="tbl_usuarios" />
+          <NavigationProperty Name="tbl_usuarios1" Relationship="vsystem_sjbModel.fk_c_th_j" FromRole="tbl_calendario" ToRole="tbl_usuarios" />
+        </EntityType>
         <Association Name="fk_c_td">
           <End Type="vsystem_sjbModel.tbl_tipo_dia" Role="tbl_tipo_dia" Multiplicity="1" />
           <End Type="vsystem_sjbModel.tbl_calendario" Role="tbl_calendario" Multiplicity="*" />
@@ -797,22 +774,36 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="fk_c_th_e">
+          <End Type="vsystem_sjbModel.tbl_usuarios" Role="tbl_usuarios" Multiplicity="1" />
+          <End Type="vsystem_sjbModel.tbl_calendario" Role="tbl_calendario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_usuarios">
+              <PropertyRef Name="talento_humano" />
+            </Principal>
+            <Dependent Role="tbl_calendario">
+              <PropertyRef Name="talento_humano_empleado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_c_th_j">
+          <End Type="vsystem_sjbModel.tbl_usuarios" Role="tbl_usuarios" Multiplicity="1" />
+          <End Type="vsystem_sjbModel.tbl_calendario" Role="tbl_calendario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tbl_usuarios">
+              <PropertyRef Name="talento_humano" />
+            </Principal>
+            <Dependent Role="tbl_calendario">
+              <PropertyRef Name="talento_humano_jefe" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="vsystem_sjbModelStoreContainer" CdmEntityContainer="vsystem_sjbEntities">
-          <EntitySetMapping Name="tbl_calendario">
-            <EntityTypeMapping TypeName="vsystem_sjbModel.tbl_calendario">
-              <MappingFragment StoreEntitySet="tbl_calendario">
-                <ScalarProperty Name="talento_humano_jefe" ColumnName="talento_humano_jefe" />
-                <ScalarProperty Name="talento_humano_empleado" ColumnName="talento_humano_empleado" />
-                <ScalarProperty Name="fecha" ColumnName="fecha" />
-                <ScalarProperty Name="tipo_dia_id" ColumnName="tipo_dia_id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="tbl_departamento">
             <EntityTypeMapping TypeName="vsystem_sjbModel.tbl_departamento">
               <MappingFragment StoreEntitySet="tbl_departamento">
@@ -931,6 +922,16 @@
               <MappingFragment StoreEntitySet="tbl_tipo_dia">
                 <ScalarProperty Name="descripcion" ColumnName="descripcion" />
                 <ScalarProperty Name="tipo_dia_id" ColumnName="tipo_dia_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tbl_calendario">
+            <EntityTypeMapping TypeName="vsystem_sjbModel.tbl_calendario">
+              <MappingFragment StoreEntitySet="tbl_calendario">
+                <ScalarProperty Name="tipo_dia_id" ColumnName="tipo_dia_id" />
+                <ScalarProperty Name="fecha" ColumnName="fecha" />
+                <ScalarProperty Name="talento_humano_empleado" ColumnName="talento_humano_empleado" />
+                <ScalarProperty Name="talento_humano_jefe" ColumnName="talento_humano_jefe" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import namespace="http://schemas.datacontract.org/2004/07/WcfServiceLibrary_sjb" />
+  <xs:import namespace="http://schemas.microsoft.com/2003/10/Serialization/Arrays" />
   <xs:element name="GetData">
     <xs:complexType>
       <xs:sequence>
@@ -210,13 +211,42 @@
         <xs:element minOccurs="0" name="dias_solicitados" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="fecha_solicitud" nillable="true" type="xs:string" />
         <xs:element minOccurs="0" name="fecha_aprobacion" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="estatusID" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="estatus" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="agregarVacacionesResponse">
     <xs:complexType>
       <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="agregarJerarquia">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="talento_humano" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="jefe_talento_humano" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="departamento_descripcion" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="agregarJerarquiaResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListaDeJefesPosibles">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="departamento_descripcion" nillable="true" type="xs:string" />
+        <xs:element minOccurs="0" name="talento_humano_actual" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListaDeJefesPosiblesResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.microsoft.com/2003/10/Serialization/Arrays" minOccurs="0" name="ListaDeJefesPosiblesResult" nillable="true" type="q8:ArrayOfstring" />
+      </xs:sequence>
     </xs:complexType>
   </xs:element>
 </xs:schema>
